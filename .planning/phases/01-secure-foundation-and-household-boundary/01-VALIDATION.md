@@ -38,7 +38,7 @@ created: 2026-03-13
 
 | Task ID | Plan | Wave | Requirement | Test Type | Automated Command | File Exists | Status |
 |---------|------|------|-------------|-----------|-------------------|-------------|--------|
-| 1-01-01 | 01 | 1 | AUTH-01 | static | `npm run lint` | ✅ | ⬜ pending |
+| 1-01-01 | 01 | 1 | AUTH-01 | static/manual | `npm run lint && npx tsc --noEmit` | ✅ | ⬜ pending |
 | 1-01-02 | 01 | 1 | AUTH-02 | static/manual | `npm run lint && npx tsc --noEmit` | ✅ | ⬜ pending |
 | 1-02-01 | 02 | 1 | HOUS-04 | static | `npm run lint && npx tsc --noEmit` | ✅ | ⬜ pending |
 | 1-02-02 | 02 | 1 | HOUS-04 | integration/manual | `supabase policy verification or SQL check` | ❌ W0 | ⬜ pending |
@@ -61,6 +61,7 @@ created: 2026-03-13
 
 | Behavior | Requirement | Why Manual | Test Instructions |
 |----------|-------------|------------|-------------------|
+| New user can sign up and enter the authenticated flow correctly | AUTH-01 | Requires end-to-end auth provider behavior, callback state, and redirect handling | Start from `/login`, complete sign-up, confirm callback/session handoff succeeds, and verify the user lands in the expected authenticated route state |
 | Signed-out user is redirected away from protected app surfaces | AUTH-02 | Middleware/app routing behavior is easiest to confirm end-to-end in browser | Visit a protected route while signed out and confirm redirect to `/login` with `next` preserved where expected |
 | Signed-in user without household membership is routed into onboarding instead of full app access | HOUS-04 | Requires session + seeded membership state | Sign in with a user lacking `household_members` row and confirm onboarding routing |
 | Signed-in user with household membership can reach protected app shell in correct household context | AUTH-01, HOUS-04 | Depends on real auth/session + DB state | Sign in with a valid household member and confirm protected app entry works |
