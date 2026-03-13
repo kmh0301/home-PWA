@@ -120,60 +120,60 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUTH-01 | Unmapped | Pending |
-| AUTH-02 | Unmapped | Pending |
-| HOUS-01 | Unmapped | Pending |
-| HOUS-02 | Unmapped | Pending |
-| HOUS-03 | Unmapped | Pending |
-| HOUS-04 | Unmapped | Pending |
-| DASH-01 | Unmapped | Pending |
-| DASH-02 | Unmapped | Pending |
-| DASH-03 | Unmapped | Pending |
-| DASH-04 | Unmapped | Pending |
-| AICP-01 | Unmapped | Pending |
-| AICP-02 | Unmapped | Pending |
-| AICP-03 | Unmapped | Pending |
-| AICP-04 | Unmapped | Pending |
-| AICP-05 | Unmapped | Pending |
-| ACCT-01 | Unmapped | Pending |
-| ACCT-02 | Unmapped | Pending |
-| ACCT-03 | Unmapped | Pending |
-| ACCT-04 | Unmapped | Pending |
-| ACCT-05 | Unmapped | Pending |
-| SETL-01 | Unmapped | Pending |
-| SETL-02 | Unmapped | Pending |
-| SETL-03 | Unmapped | Pending |
-| SETL-04 | Unmapped | Pending |
-| SETL-05 | Unmapped | Pending |
-| SETL-06 | Unmapped | Pending |
-| SETL-07 | Unmapped | Pending |
-| PLAN-01 | Unmapped | Pending |
-| PLAN-02 | Unmapped | Pending |
-| PLAN-03 | Unmapped | Pending |
-| BUDG-01 | Unmapped | Pending |
-| BUDG-02 | Unmapped | Pending |
-| SAVE-01 | Unmapped | Pending |
-| SAVE-02 | Unmapped | Pending |
-| SAVE-03 | Unmapped | Pending |
-| REVI-01 | Unmapped | Pending |
-| REVI-02 | Unmapped | Pending |
-| AICO-01 | Unmapped | Pending |
-| AICO-02 | Unmapped | Pending |
-| AICO-03 | Unmapped | Pending |
-| CHOR-01 | Unmapped | Pending |
-| CHOR-02 | Unmapped | Pending |
-| CHOR-03 | Unmapped | Pending |
-| CHOR-04 | Unmapped | Pending |
-| CHOR-05 | Unmapped | Pending |
-| CHOR-06 | Unmapped | Pending |
-| NOTF-01 | Unmapped | Pending |
-| PWA-01 | Unmapped | Pending |
-| PWA-02 | Unmapped | Pending |
+| AUTH-01 | Phase 1: Secure Foundation And Household Boundary | Pending |
+| AUTH-02 | Phase 1: Secure Foundation And Household Boundary | Pending |
+| HOUS-01 | Phase 2: Household Onboarding And Shared Membership | Pending |
+| HOUS-02 | Phase 2: Household Onboarding And Shared Membership | Pending |
+| HOUS-03 | Phase 2: Household Onboarding And Shared Membership | Pending |
+| HOUS-04 | Phase 1: Secure Foundation And Household Boundary | Pending |
+| DASH-01 | Phase 6: Chores And Household Dashboard | Pending |
+| DASH-02 | Phase 6: Chores And Household Dashboard | Pending |
+| DASH-03 | Phase 6: Chores And Household Dashboard | Pending |
+| DASH-04 | Phase 6: Chores And Household Dashboard | Pending |
+| AICP-01 | Phase 3: AI Expense Capture And Receipt Intake | Pending |
+| AICP-02 | Phase 3: AI Expense Capture And Receipt Intake | Pending |
+| AICP-03 | Phase 3: AI Expense Capture And Receipt Intake | Pending |
+| AICP-04 | Phase 3: AI Expense Capture And Receipt Intake | Pending |
+| AICP-05 | Phase 3: AI Expense Capture And Receipt Intake | Pending |
+| ACCT-01 | Phase 4: Finance Ledger And Shared Settlement | Pending |
+| ACCT-02 | Phase 4: Finance Ledger And Shared Settlement | Pending |
+| ACCT-03 | Phase 4: Finance Ledger And Shared Settlement | Pending |
+| ACCT-04 | Phase 4: Finance Ledger And Shared Settlement | Pending |
+| ACCT-05 | Phase 4: Finance Ledger And Shared Settlement | Pending |
+| SETL-01 | Phase 4: Finance Ledger And Shared Settlement | Pending |
+| SETL-02 | Phase 4: Finance Ledger And Shared Settlement | Pending |
+| SETL-03 | Phase 4: Finance Ledger And Shared Settlement | Pending |
+| SETL-04 | Phase 4: Finance Ledger And Shared Settlement | Pending |
+| SETL-05 | Phase 4: Finance Ledger And Shared Settlement | Pending |
+| SETL-06 | Phase 4: Finance Ledger And Shared Settlement | Pending |
+| SETL-07 | Phase 4: Finance Ledger And Shared Settlement | Pending |
+| PLAN-01 | Phase 5: Planning, Savings, Reviews, And AI Coaching | Pending |
+| PLAN-02 | Phase 5: Planning, Savings, Reviews, And AI Coaching | Pending |
+| PLAN-03 | Phase 5: Planning, Savings, Reviews, And AI Coaching | Pending |
+| BUDG-01 | Phase 5: Planning, Savings, Reviews, And AI Coaching | Pending |
+| BUDG-02 | Phase 5: Planning, Savings, Reviews, And AI Coaching | Pending |
+| SAVE-01 | Phase 5: Planning, Savings, Reviews, And AI Coaching | Pending |
+| SAVE-02 | Phase 5: Planning, Savings, Reviews, And AI Coaching | Pending |
+| SAVE-03 | Phase 5: Planning, Savings, Reviews, And AI Coaching | Pending |
+| REVI-01 | Phase 5: Planning, Savings, Reviews, And AI Coaching | Pending |
+| REVI-02 | Phase 5: Planning, Savings, Reviews, And AI Coaching | Pending |
+| AICO-01 | Phase 5: Planning, Savings, Reviews, And AI Coaching | Pending |
+| AICO-02 | Phase 5: Planning, Savings, Reviews, And AI Coaching | Pending |
+| AICO-03 | Phase 5: Planning, Savings, Reviews, And AI Coaching | Pending |
+| CHOR-01 | Phase 6: Chores And Household Dashboard | Pending |
+| CHOR-02 | Phase 6: Chores And Household Dashboard | Pending |
+| CHOR-03 | Phase 6: Chores And Household Dashboard | Pending |
+| CHOR-04 | Phase 6: Chores And Household Dashboard | Pending |
+| CHOR-05 | Phase 6: Chores And Household Dashboard | Pending |
+| CHOR-06 | Phase 6: Chores And Household Dashboard | Pending |
+| NOTF-01 | Phase 7: PWA Reliability And Notifications | Pending |
+| PWA-01 | Phase 7: PWA Reliability And Notifications | Pending |
+| PWA-02 | Phase 7: PWA Reliability And Notifications | Pending |
 
 **Coverage:**
 - v1 requirements: 49 total
-- Mapped to phases: 0
-- Unmapped: 49 ⚠️
+- Mapped to phases: 49
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-13*
