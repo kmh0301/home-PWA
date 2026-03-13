@@ -1,0 +1,9 @@
+-- Phase 0 foundation migration entrypoint.
+-- The canonical planning schema currently lives in docs/plans/DB-SCHEMA.sql.
+-- Apply that schema here in controlled increments as implementation proceeds.
+--
+-- Recommended workflow:
+-- 1. Copy the vetted statements from docs/plans/DB-SCHEMA.sql into versioned migrations.
+-- 2. Run `supabase db push` (or local equivalent) against the target project.
+-- 3. Regenerate src/types/database.types.ts using:
+--    supabase gen types typescript --linked > src/types/database.types.ts
