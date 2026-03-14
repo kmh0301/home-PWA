@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 import { env } from "@/lib/env";
 import { requireCurrentHousehold } from "@/lib/household/current-household";
 import { getOnboardingState, type OnboardingState } from "@/lib/onboarding/state";
-import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getSupabaseServerActionClient } from "@/lib/supabase/server-action";
 import type { Database } from "@/types/database.types";
 
 const DEFAULT_INVITE_EXPIRY_HOURS = 24;
@@ -168,7 +168,7 @@ export async function createHouseholdAction(formData: FormData) {
     redirect(`/onboarding/create?error=${encodeMessage("請先輸入家庭名稱。")}`);
   }
 
-  const supabase = await getSupabaseServerClient();
+  const supabase = await getSupabaseServerActionClient();
   const displayName =
     String(onboardingState.user.user_metadata?.display_name ?? "").trim() ||
     onboardingState.user.email?.split("@")[0] ||
@@ -213,7 +213,7 @@ export async function validateInviteAction(formData: FormData) {
     redirect(`/onboarding/join?error=${encodeMessage("邀請碼必須是 6 個字元。")}`);
   }
 
-  const supabase = await getSupabaseServerClient();
+  const supabase = await getSupabaseServerActionClient();
   const { data, error } = await supabase.rpc("validate_invite_code", {
     p_code: inviteCode,
   });
@@ -260,7 +260,7 @@ export async function claimInviteAction(formData: FormData) {
   const creatorDisplayName = String(formData.get("creatorDisplayName") ?? "").trim();
   const memberCount = String(formData.get("memberCount") ?? "").trim();
 
-  const supabase = await getSupabaseServerClient();
+  const supabase = await getSupabaseServerActionClient();
   const { data, error } = await supabase.rpc("claim_invite", {
     p_code: inviteCode,
     p_display_name: displayName,
@@ -294,7 +294,7 @@ export async function claimInviteAction(formData: FormData) {
 
 export async function regenerateInviteAction() {
   const currentHousehold = await requireTrustedCurrentHousehold();
-  const supabase = await getSupabaseServerClient();
+  const supabase = await getSupabaseServerActionClient();
   const { data, error } = await supabase.rpc("regenerate_household_invite", {
     p_household_id: currentHousehold.householdId,
     p_invite_expiry_hours: DEFAULT_INVITE_EXPIRY_HOURS,
@@ -326,7 +326,7 @@ export async function regenerateInviteAction() {
 export async function completeAccountSetupAction(formData: FormData) {
   const currentHousehold = await requireTrustedCurrentHousehold();
   const householdId = currentHousehold.householdId;
-  const supabase = await getSupabaseServerClient();
+  const supabase = await getSupabaseServerActionClient();
   const accountsToCreate = accountPresets
     .map((preset) => ({
       ...preset,
@@ -422,7 +422,7 @@ export async function completeAccountSetupAction(formData: FormData) {
 export async function skipAccountSetupAction() {
   await requireTrustedCurrentHousehold();
 
-  const supabase = await getSupabaseServerClient();
+  const supabase = await getSupabaseServerActionClient();
 
   await supabase.auth.updateUser({
     data: {
