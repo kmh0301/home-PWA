@@ -37,13 +37,13 @@ export default async function OnboardingJoinPage({
   return (
     <section className="rounded-[32px] border border-[var(--color-border)] bg-white px-6 py-8 shadow-[0_24px_80px_rgba(15,23,42,0.08)]">
       <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-muted)]">
-        加入家庭
+        1 / 2 加入家庭
       </p>
       <h1 className="mt-3 text-3xl font-semibold text-[var(--color-foreground)]">
-        輸入邀請碼
+        先核對你要加入的家庭
       </h1>
       <p className="mt-4 text-sm leading-6 text-[var(--color-muted)]">
-        請輸入夥伴分享給你的 6 位邀請碼。我們會先顯示家庭資料，確認正確後你再決定加入。
+        請輸入夥伴交給你的 6 位邀請碼。我們會先顯示家庭名稱、建立者和目前成員狀態，確認無誤後你再正式加入。
       </p>
       {params.error ? (
         <div className="mt-6 rounded-2xl border border-red-200 bg-red-50 px-4 py-4 text-sm text-red-700">
@@ -63,11 +63,14 @@ export default async function OnboardingJoinPage({
             placeholder="ABC123"
           />
         </label>
+        <p className="text-xs leading-5 text-[var(--color-muted)]">
+          如果顯示已過期、已使用或家庭已滿，請直接向對方索取新的邀請碼。
+        </p>
         <button
           type="submit"
           className="flex h-12 w-full items-center justify-center rounded-full bg-[var(--color-accent)] px-5 text-sm font-semibold text-white transition hover:opacity-90"
         >
-          驗證邀請碼
+          查看家庭資料
         </button>
       </form>
       {params.valid && params.householdName ? (
@@ -81,8 +84,9 @@ export default async function OnboardingJoinPage({
             value={params.creatorDisplayName ?? ""}
           />
           <input name="memberCount" type="hidden" value={params.memberCount ?? ""} />
-          <p className="text-sm font-semibold text-[var(--color-foreground)]">
-            準備加入「{params.householdName}」
+          <p className="text-sm font-semibold text-[var(--color-foreground)]">準備加入「{params.householdName}」</p>
+          <p className="mt-1 text-xs leading-5 text-[var(--color-muted)]">
+            只要確認以下資料正確，你就會和夥伴進入同一個家庭空間。
           </p>
           <div className="mt-4 space-y-2 rounded-2xl border border-[var(--color-border)] bg-white px-4 py-4">
             <div className="flex items-start justify-between gap-3">
@@ -126,17 +130,17 @@ export default async function OnboardingJoinPage({
               className="h-12 w-full rounded-2xl border border-[var(--color-border)] px-4 outline-none transition focus:border-[var(--color-accent)]"
               name="displayName"
               defaultValue={displayName}
-              placeholder="夥伴會看到的名稱"
+              placeholder="例如：阿晴"
             />
           </label>
           <p className="mt-3 text-xs leading-5 text-[var(--color-muted)]">
-            確認後，你會立即加入這個家庭，之後再繼續設定付款帳戶。
+            確認後會立即完成加入，下一步才是設定你的常用付款帳戶，不會重複要求你再確認一次家庭。
           </p>
           <button
             type="submit"
             className="mt-4 flex h-12 w-full items-center justify-center rounded-full bg-[var(--color-accent)] px-5 text-sm font-semibold text-white transition hover:opacity-90"
           >
-            確認加入家庭
+            確認加入這個家庭
           </button>
         </form>
       ) : null}
@@ -144,7 +148,7 @@ export default async function OnboardingJoinPage({
         href="/onboarding/create"
         className="mt-6 inline-flex text-sm font-semibold text-[var(--color-accent)]"
       >
-        返回建立家庭
+        我想先建立自己的家庭
       </Link>
     </section>
   );
