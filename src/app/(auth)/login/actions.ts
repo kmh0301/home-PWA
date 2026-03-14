@@ -8,7 +8,7 @@ import {
   getSafeRedirectTarget,
 } from "@/lib/auth/session";
 import { env } from "@/lib/env";
-import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getSupabaseServerActionClient } from "@/lib/supabase/server-action";
 
 function encodeMessage(message: string) {
   return encodeURIComponent(message);
@@ -31,7 +31,7 @@ export async function signInAction(formData: FormData) {
     String(formData.get("next") ?? DEFAULT_AUTHENTICATED_ENTRY_PATH),
     DEFAULT_AUTHENTICATED_ENTRY_PATH,
   );
-  const supabase = await getSupabaseServerClient();
+  const supabase = await getSupabaseServerActionClient();
 
   const { error } = await supabase.auth.signInWithPassword({
     email,
@@ -67,7 +67,7 @@ export async function signUpAction(formData: FormData) {
     );
   }
 
-  const supabase = await getSupabaseServerClient();
+  const supabase = await getSupabaseServerActionClient();
   const origin = await getOrigin();
   const { data, error } = await supabase.auth.signUp({
     email,
@@ -98,7 +98,7 @@ export async function signUpAction(formData: FormData) {
 export async function resetPasswordAction(formData: FormData) {
   const email = String(formData.get("email") ?? "");
   const origin = await getOrigin();
-  const supabase = await getSupabaseServerClient();
+  const supabase = await getSupabaseServerActionClient();
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
     redirectTo: `${origin}/auth/callback?next=/login`,
   });
@@ -116,7 +116,7 @@ export async function signInWithOAuthAction(formData: FormData) {
     String(formData.get("next") ?? DEFAULT_AUTHENTICATED_ENTRY_PATH),
     DEFAULT_AUTHENTICATED_ENTRY_PATH,
   );
-  const supabase = await getSupabaseServerClient();
+  const supabase = await getSupabaseServerActionClient();
   const origin = await getOrigin();
 
   const { data, error } = await supabase.auth.signInWithOAuth({
