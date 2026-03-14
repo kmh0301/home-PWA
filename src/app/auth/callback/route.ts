@@ -6,7 +6,7 @@ import {
   getSafeRedirectTarget,
 } from "@/lib/auth/session";
 import { isSupabaseConfigured } from "@/lib/env";
-import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { createRouteHandlerClient } from "@/lib/supabase/route-handler";
 
 export async function GET(request: NextRequest) {
   const requestUrl = new URL(request.url);
@@ -30,12 +30,16 @@ export async function GET(request: NextRequest) {
     return NextResponse.redirect(new URL("/login?error=missing_code", request.url));
   }
 
-  const supabase = await getSupabaseServerClient();
+  const response = NextResponse.redirect(new URL(next, request.url));
+  const supabase = createRouteHandlerClient({
+    request,
+    response,
+  });
   const { error } = await supabase.auth.exchangeCodeForSession(code);
 
   if (error) {
     return NextResponse.redirect(new URL("/login?error=auth_callback_failed", request.url));
   }
 
-  return NextResponse.redirect(new URL(next, request.url));
+  return response;
 }
