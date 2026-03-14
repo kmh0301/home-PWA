@@ -654,6 +654,28 @@ function AnimatedCharactersLoginPage({
               value={isRegister ? "register" : "login"}
             />
 
+            {isRegister ? (
+              <div className="flex flex-col gap-2">
+                <Label htmlFor="displayName" className="text-sm font-medium">
+                  Display name
+                </Label>
+                <Input
+                  id="displayName"
+                  name="displayName"
+                  type="text"
+                  placeholder="例如：阿晴"
+                  autoComplete="nickname"
+                  onFocus={triggerTypingAnimation}
+                  onBlur={() => {
+                    setIsTyping(false)
+                    setIsLookingAtEachOther(false)
+                  }}
+                  required
+                  className="h-12 border-border/60 bg-background focus-visible:ring-primary"
+                />
+              </div>
+            ) : null}
+
             <div className="flex flex-col gap-2">
               <Label htmlFor="email" className="text-sm font-medium">
                 Email
