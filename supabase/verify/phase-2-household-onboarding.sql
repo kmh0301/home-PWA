@@ -67,10 +67,10 @@ FROM public.regenerate_household_invite(:'owner_create_household_id'::UUID, 24)
 
 INSERT INTO phase2_assertions (label, actual, expected, passed, details)
 VALUES (
-  'owner regenerate while slot is open',
+  'owner regenerate while active invite exists',
   :'owner_regen_status',
-  'success',
-  :'owner_regen_status' = 'success',
+  'active_invite_exists',
+  :'owner_regen_status' = 'active_invite_exists',
   COALESCE(:'owner_regen_invite_code', '')
 );
 
