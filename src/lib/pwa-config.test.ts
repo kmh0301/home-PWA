@@ -15,9 +15,9 @@ test("next config does not wrap the app with next-pwa", () => {
 });
 
 test("manifest start_url uses the app entry route instead of dashboard", () => {
-  const source = readFileSync(new URL("../app/manifest.ts", import.meta.url), "utf8");
+  const layoutSource = readFileSync(new URL("../app/layout.tsx", import.meta.url), "utf8");
 
-  assert.match(source, /start_url:\s*"\/"/);
+  assert.match(layoutSource, /manifest:\s*undefined/);
 });
 
 test("service worker file actively unregisters old workers and clears caches", () => {

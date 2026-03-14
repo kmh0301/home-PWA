@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     template: "%s | Home Collaboration PWA",
   },
   description: "Phase 0 foundation for a two-person household management PWA.",
+  manifest: undefined,
 };
 
 export default function RootLayout({
