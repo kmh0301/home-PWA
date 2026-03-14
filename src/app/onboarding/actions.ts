@@ -270,7 +270,12 @@ export async function claimInviteAction(formData: FormData) {
 
   revalidatePath("/");
   revalidatePath("/onboarding/join");
-  redirect("/onboarding/accounts?joined=1");
+  revalidatePath("/onboarding/join/success");
+  redirect(
+    `/onboarding/join/success?joined=1&householdName=${encodeMessage(
+      result.household_name ?? "",
+    )}`,
+  );
 }
 
 export async function regenerateInviteAction() {
