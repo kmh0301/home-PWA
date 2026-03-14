@@ -40,18 +40,18 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
   const mode = params.mode === "register" ? "register" : "login";
   const next = params.next ?? "/";
   const statusTone = params.error ? "error" : params.message ? "success" : null;
-  const title = mode === "register" ? "Create your account" : "Sign in to continue";
+  const title = mode === "register" ? "建立帳戶" : "登入後繼續";
   const description =
     mode === "register"
-      ? "Set up your secure account first. The app will route you into the right next step after verification."
-      : "Use your email and password to return to your shared household workspace.";
+      ? "先完成註冊和電郵驗證，之後就可以加入你的家庭空間。"
+      : "使用你的電郵和密碼，返回你們的共享家庭空間。";
 
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-md flex-col justify-center px-4 py-8 sm:py-10">
       <section className="flex flex-col gap-5">
         <div className="flex flex-col gap-3">
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted-foreground">
-            Home PWA
+            家庭協作帳本
           </p>
           <div className="flex flex-col gap-2">
             <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
@@ -74,7 +74,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
                   mode === "login" ? "bg-card text-foreground" : "text-muted-foreground hover:text-foreground",
                 )}
               >
-                Login
+                登入
               </Link>
               <Link
                 href={`/login?mode=register${next ? `&next=${encodeURIComponent(next)}` : ""}`}
@@ -85,13 +85,13 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
                     : "text-muted-foreground hover:text-foreground",
                 )}
               >
-                Register
+                註冊
               </Link>
             </div>
 
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <ShieldCheck className="size-4 text-primary" aria-hidden="true" />
-              <span>Secure session and protected household routing</span>
+              <span>安全登入狀態與受保護的家庭空間</span>
             </div>
           </CardHeader>
 
@@ -107,7 +107,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
                 )}
               >
                 <AlertTitle className="text-sm font-semibold">
-                  {statusTone === "error" ? "Action needed" : "Check your inbox"}
+                  {statusTone === "error" ? "請先處理以下問題" : "請查看你的電郵"}
                 </AlertTitle>
                 <AlertDescription>
                   {params.error ?? params.message}
@@ -125,18 +125,18 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
                 {mode === "register" ? (
                   <Field>
                     <FieldContent>
-                      <FieldLabel htmlFor="displayName">Display name</FieldLabel>
+                      <FieldLabel htmlFor="displayName">顯示名稱</FieldLabel>
                       <Input
                         autoComplete="nickname"
                         autoCapitalize="words"
                         id="displayName"
                         name="displayName"
-                        placeholder="Alex"
+                        placeholder="例如：阿晴"
                         required
                         className="h-12 rounded-2xl border-input bg-background px-4"
                       />
                       <FieldDescription>
-                        這個名稱會顯示在 household 邀請和共享紀錄中。
+                        這個名稱會顯示在家庭邀請和共享紀錄中。
                       </FieldDescription>
                     </FieldContent>
                   </Field>
@@ -144,7 +144,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 
                 <Field>
                   <FieldContent>
-                    <FieldLabel htmlFor="email">Email</FieldLabel>
+                    <FieldLabel htmlFor="email">電郵</FieldLabel>
                     <Input
                       autoCapitalize="none"
                       autoComplete="email"
@@ -152,7 +152,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
                       name="email"
                       spellCheck={false}
                       type="email"
-                      placeholder="alex@example.com"
+                      placeholder="name@example.com"
                       required
                       className="h-12 rounded-2xl border-input bg-background px-4"
                     />
@@ -161,7 +161,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 
                 <Field>
                   <FieldContent>
-                    <FieldLabel htmlFor="password">Password</FieldLabel>
+                    <FieldLabel htmlFor="password">密碼</FieldLabel>
                     <Input
                       autoComplete={mode === "register" ? "new-password" : "current-password"}
                       id="password"
@@ -177,7 +177,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
                 {mode === "register" ? (
                   <Field>
                     <FieldContent>
-                      <FieldLabel htmlFor="passwordConfirm">Confirm password</FieldLabel>
+                      <FieldLabel htmlFor="passwordConfirm">確認密碼</FieldLabel>
                       <Input
                         autoComplete="new-password"
                         id="passwordConfirm"
@@ -194,7 +194,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 
               <div className="flex flex-col gap-3">
                 <Button type="submit" size="lg" className="h-12 rounded-full text-sm font-semibold">
-                  {mode === "register" ? "Create account" : "Sign in"}
+                  {mode === "register" ? "建立帳戶" : "登入"}
                   <ArrowRight data-icon="inline-end" />
                 </Button>
 
@@ -205,13 +205,13 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
                     variant="link"
                     className="h-auto justify-start px-0 text-sm text-primary"
                   >
-                    Forgot password?
+                    忘記密碼？
                   </Button>
                 ) : null}
               </div>
             </form>
 
-            <FieldSeparator>other options</FieldSeparator>
+            <FieldSeparator>其他登入方式</FieldSeparator>
 
             <div className="grid gap-2.5">
               {(["google", "apple"] as const).map((provider) => (
@@ -224,7 +224,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
                     size="lg"
                     className="h-11 w-full justify-center rounded-full border-border bg-background text-muted-foreground hover:bg-muted hover:text-foreground"
                   >
-                    Sign in with {provider === "google" ? "Google" : "Apple"}
+                    使用 {provider === "google" ? "Google" : "Apple"} 登入
                   </Button>
                 </form>
               ))}
@@ -233,12 +233,12 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
             <Separator />
 
             <div className="flex items-center justify-between gap-3 text-sm text-muted-foreground">
-              <p>Need access to a shared home?</p>
+              <p>已有共享家庭邀請碼？</p>
               <Link
                 href="/onboarding/join"
                 className="font-semibold text-primary transition-colors hover:text-primary/80"
               >
-                Use invite code
+                使用邀請碼
               </Link>
             </div>
           </CardContent>
