@@ -25,4 +25,5 @@ test("service worker file actively unregisters old workers and clears caches", (
 
   assert.match(source, /registration\.unregister/);
   assert.match(source, /caches\.keys/);
+  assert.doesNotMatch(source, /client\.navigate/);
 });
