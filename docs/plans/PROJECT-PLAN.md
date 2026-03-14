@@ -49,29 +49,29 @@
 ## Phase 0: Project Foundation (Week 1)
 
 ### 0.1 Next.js Project Init
-- [ ] `npx create-next-app@latest` with TypeScript, App Router, Tailwind
-- [ ] Install and configure shadcn/ui (`npx shadcn@latest init`)
-- [ ] Add base layout: bottom nav shell (4 tabs), root providers
-- [ ] Configure path aliases (`@/` → `src/`)
-- [ ] Set up ESLint + Prettier + Husky pre-commit
+- [x] `npx create-next-app@latest` with TypeScript, App Router, Tailwind
+- [x] Install and configure shadcn/ui (`npx shadcn@latest init`)
+- [x] Add base layout: bottom nav shell (4 tabs), root providers
+- [x] Configure path aliases (`@/` → `src/`)
+- [x] Set up ESLint + Prettier + Husky pre-commit
 
 ### 0.2 Supabase Setup
 - [ ] Create Supabase project; save keys to `.env.local`
 - [ ] Apply full DB schema (see `docs/plans/DB-SCHEMA.sql`)
 - [ ] Run `supabase gen types typescript` → `src/types/database.types.ts`
-- [ ] Install `@supabase/ssr` + configure client/server helpers
+- [x] Install `@supabase/ssr` + configure client/server helpers
 - [ ] Verify RLS is enabled on all 21 tables (see DB-SCHEMA.sql for full list; cron_logs is included but has no authenticated policies by design)
 
 ### 0.3 Auth Integration
-- [ ] Supabase Auth: email/password + Google OAuth + Apple OAuth
-- [ ] Auth middleware (`middleware.ts`): protect all non-auth routes
+- [x] Supabase Auth: email/password + Google OAuth + Apple OAuth
+- [x] Auth middleware (`middleware.ts`): protect all non-auth routes
 - [ ] Session helpers: `getUser()` server-side, `useUser()` client-side
-- [ ] Auth callback route: `/auth/callback`
+- [x] Auth callback route: `/auth/callback`
 
 ### 0.4 PWA Scaffold
-- [ ] `next-pwa` or `@ducanh2912/next-pwa` setup
-- [ ] `public/manifest.json`: name, icons, display=standalone, theme_color
-- [ ] Service worker: basic precache (shell + static assets)
+- [x] `next-pwa` or `@ducanh2912/next-pwa` setup
+- [x] `public/manifest.json`: name, icons, display=standalone, theme_color
+- [x] Service worker: basic precache (shell + static assets)
 - [ ] Verify "Add to Home Screen" on iOS Safari + Android Chrome
 
 ### 0.5 CI/CD
@@ -85,46 +85,46 @@
 
 ### 1.1 OB-01 Splash Screen
 - [ ] Full-screen logo + tagline
-- [ ] Auth state check on mount:
+- [x] Auth state check on mount:
   - No session → `/login`
   - Session, no household → `/onboarding/create`
   - Session + household → `/`
 
 ### 1.2 OB-02 Login / Register
-- [ ] Email + password form with toggle (login ↔ register)
-- [ ] Register: add display name field + password confirm
-- [ ] Google OAuth button → Supabase OAuth flow
-- [ ] Apple OAuth button → Supabase OAuth flow
-- [ ] Error states: wrong password, email taken, network fail
-- [ ] "Forgot password" → Supabase reset email
+- [x] Email + password form with toggle (login ↔ register)
+- [x] Register: add display name field + password confirm
+- [x] Google OAuth button → Supabase OAuth flow
+- [x] Apple OAuth button → Supabase OAuth flow
+- [x] Error states: wrong password, email taken, network fail
+- [x] "Forgot password" → Supabase reset email
 
 ### 1.3 OB-03 Create Household
-- [ ] Household name input
-- [ ] On submit: `INSERT households` + `INSERT household_members` (creator)
-- [ ] Generate 6-char alphanumeric invite code → `INSERT household_invites`
-- [ ] Show invite code modal with copy + share buttons
+- [x] Household name input
+- [x] On submit: `INSERT households` + `INSERT household_members` (creator)
+- [x] Generate 6-char alphanumeric invite code → `INSERT household_invites`
+- [x] Show invite code modal with copy + share buttons
 - [ ] Proceed to OB-05
 
 ### 1.4 OB-04 Join Household via Invite Code
-- [ ] 6-char code input (auto-uppercase)
-- [ ] Validate: call `validate_invite_code(code)` SECURITY DEFINER RPC → returns `{ household_name, is_valid, expires_at }`; show household name preview on valid; show error if `is_valid = false` or empty result
-- [ ] On confirm: call `claim_invite(code, display_name)` SECURITY DEFINER RPC
+- [x] 6-char code input (auto-uppercase)
+- [x] Validate: call `validate_invite_code(code)` SECURITY DEFINER RPC → returns `{ household_name, is_valid, expires_at }`; show household name preview on valid; show error if `is_valid = false` or empty result
+- [x] On confirm: call `claim_invite(code, display_name)` SECURITY DEFINER RPC
   - Atomically: marks invite as used + `INSERT household_members` in one transaction
   - DB trigger `household_max_members_check` fires on INSERT → raises if household already has 2 members
   - Raises on: invalid code, expired, already a member, household full
-- [ ] Error states: map DB exception messages to user-facing strings (invalid/expired/full/duplicate)
+- [x] Error states: map DB exception messages to user-facing strings (invalid/expired/full/duplicate)
 - [ ] Proceed to OB-05
 
 ### 1.5 OB-05 Initial Payment Account Setup
-- [ ] Pre-render default accounts: Alipay HK, PayMe, Cash (checked), Credit Card (unchecked)
-- [ ] Each enabled account shows initial balance field
-- [ ] Credit card: limit + current used fields
-- [ ] `[+ Add custom account]` → inline name + type selector
-- [ ] On complete: for each enabled account:
+- [x] Pre-render default accounts: Alipay HK, PayMe, Cash (checked), Credit Card (unchecked)
+- [x] Each enabled account shows initial balance field
+- [x] Credit card: limit + current used fields
+- [x] `[+ Add custom account]` → inline name + type selector
+- [x] On complete: for each enabled account:
   - `INSERT payment_accounts` (initial account creation — brand-new records, no existing state to protect)
   - If initial balance > 0: call `record_manual_adjustment(household_id, account_id, initial_balance_cents, 'Initial setup')` RPC → writes `manual_adjustment` account_event atomically
   - Credit card with existing used amount: call `set_credit_card_used_balance(household_id, account_id, credit_used_cents, 'Initial setup')` RPC → validates 0 ≤ used ≤ limit, updates `credit_used_cents`, writes `manual_adjustment` account_event atomically
-- [ ] "Skip" → proceed with no accounts (can set up later in FI-07)
+- [x] "Skip" → proceed with no accounts (can set up later in FI-07)
 
 ### 1.6 RLS Integration Test
 - [ ] Create two test households; confirm cross-household queries return 0 rows for all 21 tables

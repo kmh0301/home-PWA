@@ -1,33 +1,51 @@
 import { NextResponse, type NextRequest } from "next/server";
 
+import {
+  DEFAULT_AUTHENTICATED_ENTRY_PATH,
+  buildLoginRedirectPath,
+  getSafeRedirectTarget,
+  isProtectedAppPath,
+  isPublicAuthPath,
+} from "@/lib/auth/session";
 import { isSupabaseConfigured } from "@/lib/env";
 import { updateSession } from "@/lib/supabase/middleware";
-
-const publicRoutes = new Set(["/login", "/auth/callback"]);
 
 export async function middleware(request: NextRequest) {
   if (!isSupabaseConfigured) {
     return NextResponse.next();
   }
 
-  const { session, response } = await updateSession(request);
-  const { pathname } = request.nextUrl;
-  const isProtected = pathname.startsWith("/dashboard");
-  const isPublic = publicRoutes.has(pathname);
+  const { user, response } = await updateSession(request);
+  const { pathname, search } = request.nextUrl;
+  const isProtected = isProtectedAppPath(pathname);
+  const isPublicAuthRoute = isPublicAuthPath(pathname);
+  const isAuthCallbackExchange =
+    pathname === "/auth/callback" && request.nextUrl.searchParams.has("code");
 
-  if (!session && isProtected) {
-    const loginUrl = new URL("/login", request.url);
-    loginUrl.searchParams.set("next", pathname);
-    return NextResponse.redirect(loginUrl);
+  if (!user && isProtected) {
+    return NextResponse.redirect(new URL(buildLoginRedirectPath(`${pathname}${search}`), request.url));
   }
 
-  if (session && isPublic) {
-    return NextResponse.redirect(new URL("/dashboard", request.url));
+  if (user && isPublicAuthRoute && !isAuthCallbackExchange) {
+    const next = getSafeRedirectTarget(
+      request.nextUrl.searchParams.get("next"),
+      DEFAULT_AUTHENTICATED_ENTRY_PATH,
+    );
+    return NextResponse.redirect(new URL(next, request.url));
   }
 
   return response;
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/login", "/auth/callback"],
+  matcher: [
+    "/",
+    "/dashboard/:path*",
+    "/finance/:path*",
+    "/chores/:path*",
+    "/insights/:path*",
+    "/onboarding/:path*",
+    "/login",
+    "/auth/callback",
+  ],
 };

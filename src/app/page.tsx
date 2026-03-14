@@ -1,21 +1,20 @@
 import { redirect } from "next/navigation";
 
+import { getCurrentSessionState } from "@/lib/auth/session";
 import { isSupabaseConfigured } from "@/lib/env";
-import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getNextOnboardingRoute, getOnboardingState } from "@/lib/onboarding/state";
 
 export default async function HomePage() {
   if (!isSupabaseConfigured) {
     redirect("/login");
   }
 
-  const supabase = await getSupabaseServerClient();
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
+  const { hasSession } = await getCurrentSessionState();
 
-  if (session) {
-    redirect("/dashboard");
+  if (!hasSession) {
+    redirect("/login");
   }
 
-  redirect("/login");
+  const onboardingState = await getOnboardingState();
+  redirect(getNextOnboardingRoute(onboardingState));
 }
