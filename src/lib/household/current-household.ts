@@ -8,7 +8,7 @@ import type { Database } from "@/types/database.types";
 
 export type CurrentHouseholdMembership = Pick<
   Database["public"]["Tables"]["household_members"]["Row"],
-  "id" | "household_id" | "user_id" | "display_name"
+  "id" | "household_id" | "user_id" | "display_name" | "joined_at"
 >;
 
 export type CurrentHouseholdContext = {
@@ -37,7 +37,7 @@ export async function getCurrentHousehold(): Promise<CurrentHouseholdContext> {
 
   const { data: householdMembership } = await supabase
     .from("household_members")
-    .select("id, household_id, user_id, display_name")
+    .select("id, household_id, user_id, display_name, joined_at")
     .eq("user_id", user.id)
     .maybeSingle<CurrentHouseholdMembership>();
 

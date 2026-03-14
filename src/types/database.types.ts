@@ -150,18 +150,29 @@ export type Database = {
           created_at: string;
           id: string;
           name: string;
+          owner_user_id: string;
         };
         Insert: {
           created_at?: string;
           id?: string;
           name: string;
+          owner_user_id?: string;
         };
         Update: Partial<{
           created_at: string;
           id: string;
           name: string;
+          owner_user_id: string;
         }>;
-        Relationships: [];
+        Relationships: [
+          {
+            foreignKeyName: "households_owner_user_id_fkey";
+            columns: ["owner_user_id"];
+            isOneToOne: false;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          },
+        ];
       };
       payment_accounts: {
         Row: {
