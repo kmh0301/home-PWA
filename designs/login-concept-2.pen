@@ -1,0 +1,348 @@
+{
+  "version": "2.8",
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "content": "家用帳本 / 安全入口",
+              "fill": "#666666",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "600",
+              "id": "ihdIr",
+              "letterSpacing": 1,
+              "name": "mark2",
+              "type": "text"
+            },
+            {
+              "content": "Sign in with the calm of a private household office.",
+              "fill": "#0F0F0F",
+              "fontFamily": "Cormorant Garamond",
+              "fontSize": 78,
+              "fontWeight": "500",
+              "id": "8BNvv",
+              "lineHeight": 0.95,
+              "name": "hero2",
+              "textGrowth": "fixed-width",
+              "type": "text",
+              "width": 560
+            },
+            {
+              "content": "把登入頁做成秩序感的一部分，而不是一個臨時表單。",
+              "fill": "#666666",
+              "fontFamily": "Inter",
+              "fontSize": 20,
+              "fontWeight": "normal",
+              "id": "j3v30",
+              "lineHeight": 1.5,
+              "name": "sub2",
+              "textGrowth": "fixed-width",
+              "type": "text",
+              "width": 500
+            },
+            {
+              "children": [
+                {
+                  "content": "家庭空間的入口",
+                  "fill": "#0F0F0F",
+                  "fontFamily": "Cormorant Garamond",
+                  "fontSize": 32,
+                  "fontWeight": "500",
+                  "id": "fuprt",
+                  "name": "qTitle2",
+                  "type": "text"
+                },
+                {
+                  "content": "每一次登入都應該清楚告訴你：你正在進入誰的資料、哪些紀錄、以及這個空間有多安全。",
+                  "fill": "#666666",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "normal",
+                  "id": "AOE7J",
+                  "lineHeight": 1.55,
+                  "name": "qBody2",
+                  "textGrowth": "fixed-width",
+                  "type": "text",
+                  "width": "fill_container"
+                }
+              ],
+              "gap": 14,
+              "id": "xAxUt",
+              "layout": "vertical",
+              "name": "quote2",
+              "padding": [
+                28,
+                0,
+                0,
+                0
+              ],
+              "stroke": {
+                "fill": "#C41E3A",
+                "thickness": {
+                  "left": 3
+                }
+              },
+              "type": "frame",
+              "width": 520
+            }
+          ],
+          "fill": "#F3F1EA",
+          "gap": 36,
+          "height": "fill_container",
+          "id": "U4HYC",
+          "layout": "vertical",
+          "name": "left2",
+          "padding": [
+            96,
+            88,
+            96,
+            96
+          ],
+          "type": "frame",
+          "width": 760
+        },
+        {
+          "children": [
+            {
+              "fill": "#E0E0E0",
+              "height": 88,
+              "id": "MSxD0",
+              "name": "rail2",
+              "type": "frame",
+              "width": 1
+            },
+            {
+              "content": "MEMBER ACCESS",
+              "fill": "#999999",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "600",
+              "id": "blqs9",
+              "letterSpacing": 1,
+              "name": "formLabel2",
+              "type": "text"
+            },
+            {
+              "content": "歡迎回來",
+              "fill": "#0F0F0F",
+              "fontFamily": "Cormorant Garamond",
+              "fontSize": 54,
+              "fontWeight": "500",
+              "id": "IdfN9",
+              "name": "formTitle2",
+              "type": "text"
+            },
+            {
+              "content": "登入以繼續查看共享預算、家務節點與採購紀錄。",
+              "fill": "#666666",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "normal",
+              "id": "DL9Qq",
+              "name": "formCopy2",
+              "textGrowth": "fixed-width",
+              "type": "text",
+              "width": 360
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "content": "電郵地址",
+                      "fill": "#999999",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "id": "bbHNS",
+                      "name": "email2l",
+                      "type": "text"
+                    },
+                    {
+                      "content": "name@example.com",
+                      "fill": "#0F0F0F",
+                      "fontFamily": "Cormorant Garamond",
+                      "fontSize": 24,
+                      "fontWeight": "500",
+                      "id": "HgCP4",
+                      "name": "email2v",
+                      "type": "text"
+                    }
+                  ],
+                  "gap": 10,
+                  "id": "SCvAt",
+                  "layout": "vertical",
+                  "name": "email2",
+                  "padding": [
+                    0,
+                    0,
+                    12,
+                    0
+                  ],
+                  "stroke": {
+                    "fill": "#E0E0E0",
+                    "thickness": {
+                      "bottom": 1
+                    }
+                  },
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "children": [
+                    {
+                      "content": "密碼",
+                      "fill": "#999999",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "id": "2zqAw",
+                      "name": "pass2l",
+                      "type": "text"
+                    },
+                    {
+                      "content": "••••••••",
+                      "fill": "#0F0F0F",
+                      "fontFamily": "Cormorant Garamond",
+                      "fontSize": 24,
+                      "fontWeight": "500",
+                      "id": "Xmr1z",
+                      "name": "pass2v",
+                      "type": "text"
+                    }
+                  ],
+                  "gap": 10,
+                  "id": "MJdET",
+                  "layout": "vertical",
+                  "name": "pass2",
+                  "padding": [
+                    0,
+                    0,
+                    12,
+                    0
+                  ],
+                  "stroke": {
+                    "fill": "#E0E0E0",
+                    "thickness": {
+                      "bottom": 1
+                    }
+                  },
+                  "type": "frame",
+                  "width": "fill_container"
+                }
+              ],
+              "gap": 24,
+              "id": "wspHz",
+              "layout": "vertical",
+              "name": "fieldWrap2",
+              "type": "frame",
+              "width": 420
+            },
+            {
+              "children": [
+                {
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "content": "登入家庭空間",
+                      "fill": "#FAFAF7",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600",
+                      "id": "wfNSW",
+                      "letterSpacing": 0.5,
+                      "name": "cta2t",
+                      "type": "text"
+                    }
+                  ],
+                  "fill": "#C41E3A",
+                  "gap": 10,
+                  "id": "986gZ",
+                  "justifyContent": "center",
+                  "name": "cta2",
+                  "padding": [
+                    14,
+                    18
+                  ],
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "content": "切換到建立帳戶",
+                  "fill": "#C41E3A",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "600",
+                  "id": "y1Jvu",
+                  "name": "alt2",
+                  "type": "text"
+                }
+              ],
+              "gap": 18,
+              "id": "EMQeD",
+              "layout": "vertical",
+              "name": "ctaWrap2",
+              "type": "frame",
+              "width": 420
+            },
+            {
+              "alignItems": "center",
+              "children": [
+                {
+                  "fill": "#C41E3A",
+                  "height": 16,
+                  "iconFontFamily": "lucide",
+                  "iconFontName": "shield",
+                  "id": "luCyY",
+                  "name": "m2i",
+                  "type": "icon_font",
+                  "width": 16
+                },
+                {
+                  "content": "受保護的家庭工作區，登入裝置狀態會被清楚標記。",
+                  "fill": "#666666",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "id": "1A8ab",
+                  "name": "m2t",
+                  "textGrowth": "fixed-width",
+                  "type": "text",
+                  "width": "fill_container"
+                }
+              ],
+              "gap": 14,
+              "id": "fs4k3",
+              "name": "meta2",
+              "type": "frame",
+              "width": 420
+            }
+          ],
+          "gap": 28,
+          "height": "fill_container",
+          "id": "15g9G",
+          "layout": "vertical",
+          "name": "right2",
+          "padding": [
+            120,
+            96,
+            120,
+            80
+          ],
+          "type": "frame",
+          "width": "fill_container"
+        }
+      ],
+      "fill": "#FAFAF7",
+      "height": 960,
+      "id": "6GpS1",
+      "name": "Concept 2 - Editorial Authority",
+      "type": "frame",
+      "width": 1440,
+      "x": 1520,
+      "y": 0
+    }
+  ]
+}

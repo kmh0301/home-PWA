@@ -1,0 +1,606 @@
+{
+  "version": "2.8",
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "content": "HOME PWA // SECURE PORTAL",
+              "fill": "#94A3B8",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "600",
+              "id": "ViBEj",
+              "letterSpacing": 1,
+              "name": "brand3",
+              "type": "text"
+            },
+            {
+              "content": "One portal for money, chores, and the rhythm of home.",
+              "fill": "#F8FAFC",
+              "fontFamily": "Playfair Display",
+              "fontSize": 78,
+              "id": "FifxI",
+              "lineHeight": 0.96,
+              "name": "head3",
+              "textGrowth": "fixed-width",
+              "type": "text",
+              "width": 700
+            },
+            {
+              "content": "來自 ui-ux-pro-max 的 dark fintech 語法，但把科技感收斂成可信任的夜間入口。",
+              "fill": "#CBD5E1",
+              "fontFamily": "Inter",
+              "fontSize": 18,
+              "fontWeight": "normal",
+              "id": "8uNdA",
+              "lineHeight": 1.5,
+              "name": "copy3",
+              "textGrowth": "fixed-width",
+              "type": "text",
+              "width": 560
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "fill": "#60A5FA",
+                      "height": 16,
+                      "iconFontFamily": "lucide",
+                      "iconFontName": "shield-check",
+                      "id": "KBuA1",
+                      "name": "c31i",
+                      "type": "icon_font",
+                      "width": 16
+                    },
+                    {
+                      "content": "Session protection",
+                      "fill": "#E2E8F0",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600",
+                      "id": "MIqrC",
+                      "name": "c31t",
+                      "type": "text"
+                    }
+                  ],
+                  "cornerRadius": 999,
+                  "fill": "#132238",
+                  "gap": 10,
+                  "id": "QxtRW",
+                  "name": "chip31",
+                  "padding": [
+                    10,
+                    14
+                  ],
+                  "stroke": {
+                    "fill": "#22324B",
+                    "thickness": 1
+                  },
+                  "type": "frame"
+                },
+                {
+                  "children": [
+                    {
+                      "fill": "#60A5FA",
+                      "height": 16,
+                      "iconFontFamily": "lucide",
+                      "iconFontName": "activity",
+                      "id": "DQn4t",
+                      "name": "c32i",
+                      "type": "icon_font",
+                      "width": 16
+                    },
+                    {
+                      "content": "Live household sync",
+                      "fill": "#E2E8F0",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600",
+                      "id": "U34eV",
+                      "name": "c32t",
+                      "type": "text"
+                    }
+                  ],
+                  "cornerRadius": 999,
+                  "fill": "#132238",
+                  "gap": 10,
+                  "id": "IkhL6",
+                  "name": "chip32",
+                  "padding": [
+                    10,
+                    14
+                  ],
+                  "stroke": {
+                    "fill": "#22324B",
+                    "thickness": 1
+                  },
+                  "type": "frame"
+                },
+                {
+                  "children": [
+                    {
+                      "fill": "#60A5FA",
+                      "height": 16,
+                      "iconFontFamily": "lucide",
+                      "iconFontName": "wallet",
+                      "id": "SKdlU",
+                      "name": "c33i",
+                      "type": "icon_font",
+                      "width": 16
+                    },
+                    {
+                      "content": "Budget continuity",
+                      "fill": "#E2E8F0",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600",
+                      "id": "SZZjw",
+                      "name": "c33t",
+                      "type": "text"
+                    }
+                  ],
+                  "cornerRadius": 999,
+                  "fill": "#132238",
+                  "gap": 10,
+                  "id": "TukTb",
+                  "name": "chip33",
+                  "padding": [
+                    10,
+                    14
+                  ],
+                  "stroke": {
+                    "fill": "#22324B",
+                    "thickness": 1
+                  },
+                  "type": "frame"
+                }
+              ],
+              "gap": 14,
+              "id": "gRgRO",
+              "name": "chips3",
+              "type": "frame"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "content": "03",
+                      "fill": "#F8FAFC",
+                      "fontFamily": "Inter",
+                      "fontSize": 34,
+                      "fontWeight": "600",
+                      "id": "wtyyv",
+                      "name": "m31a",
+                      "type": "text"
+                    },
+                    {
+                      "content": "共享清單即將到期",
+                      "fill": "#94A3B8",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "id": "ZZjm7",
+                      "name": "m31b",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "cornerRadius": 20,
+                  "fill": "#101A2D",
+                  "gap": 8,
+                  "id": "RfdRJ",
+                  "layout": "vertical",
+                  "name": "met31",
+                  "padding": 22,
+                  "stroke": {
+                    "fill": "#1E2B45",
+                    "thickness": 1
+                  },
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "children": [
+                    {
+                      "content": "12",
+                      "fill": "#F8FAFC",
+                      "fontFamily": "Inter",
+                      "fontSize": 34,
+                      "fontWeight": "600",
+                      "id": "zVwhM",
+                      "name": "m32a",
+                      "type": "text"
+                    },
+                    {
+                      "content": "今日家庭任務節點",
+                      "fill": "#94A3B8",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "id": "EqR3N",
+                      "name": "m32b",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "cornerRadius": 20,
+                  "fill": "#101A2D",
+                  "gap": 8,
+                  "id": "PKqqa",
+                  "layout": "vertical",
+                  "name": "met32",
+                  "padding": 22,
+                  "stroke": {
+                    "fill": "#1E2B45",
+                    "thickness": 1
+                  },
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "children": [
+                    {
+                      "content": "HK$ 8,420",
+                      "fill": "#F8FAFC",
+                      "fontFamily": "Inter",
+                      "fontSize": 34,
+                      "fontWeight": "600",
+                      "id": "VNTqs",
+                      "name": "m33a",
+                      "type": "text"
+                    },
+                    {
+                      "content": "本月共同支出快照",
+                      "fill": "#94A3B8",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "id": "SDup7",
+                      "name": "m33b",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "cornerRadius": 20,
+                  "fill": "#101A2D",
+                  "gap": 8,
+                  "id": "VJ0Dd",
+                  "layout": "vertical",
+                  "name": "met33",
+                  "padding": 22,
+                  "stroke": {
+                    "fill": "#1E2B45",
+                    "thickness": 1
+                  },
+                  "type": "frame",
+                  "width": "fill_container"
+                }
+              ],
+              "gap": 16,
+              "id": "hBAsH",
+              "name": "metrics3",
+              "type": "frame",
+              "width": 820
+            }
+          ],
+          "gap": 28,
+          "height": "fill_container",
+          "id": "3annJ",
+          "layout": "vertical",
+          "name": "left3",
+          "padding": [
+            96,
+            88
+          ],
+          "type": "frame",
+          "width": "fill_container"
+        },
+        {
+          "alignItems": "center",
+          "children": [
+            {
+              "children": [
+                {
+                  "content": "SECURE SIGN IN",
+                  "fill": "#94A3B8",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "id": "2xC4T",
+                  "letterSpacing": 1,
+                  "name": "label3",
+                  "type": "text"
+                },
+                {
+                  "content": "進入家庭控制台",
+                  "fill": "#F8FAFC",
+                  "fontFamily": "Inter",
+                  "fontSize": 34,
+                  "fontWeight": "600",
+                  "id": "tEoqp",
+                  "name": "title3",
+                  "type": "text"
+                },
+                {
+                  "content": "你的最近家庭工作區、待辦節奏與預算快照會在登入後恢復。",
+                  "fill": "#94A3B8",
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "normal",
+                  "id": "GDuRi",
+                  "name": "body3",
+                  "textGrowth": "fixed-width",
+                  "type": "text",
+                  "width": "fill_container"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "content": "電郵地址",
+                          "fill": "#94A3B8",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "id": "HkICr",
+                          "name": "e3l",
+                          "type": "text"
+                        },
+                        {
+                          "content": "name@example.com",
+                          "fill": "#F8FAFC",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "500",
+                          "id": "cuzE5",
+                          "name": "e3v",
+                          "type": "text"
+                        }
+                      ],
+                      "cornerRadius": 18,
+                      "fill": "#101A2D",
+                      "gap": 8,
+                      "id": "GXlrF",
+                      "layout": "vertical",
+                      "name": "email3",
+                      "padding": [
+                        16,
+                        18
+                      ],
+                      "stroke": {
+                        "fill": "#24324A",
+                        "thickness": 1
+                      },
+                      "type": "frame",
+                      "width": "fill_container"
+                    },
+                    {
+                      "children": [
+                        {
+                          "content": "密碼",
+                          "fill": "#94A3B8",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "id": "s86Xh",
+                          "name": "p3l",
+                          "type": "text"
+                        },
+                        {
+                          "content": "••••••••",
+                          "fill": "#F8FAFC",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "500",
+                          "id": "UrzKg",
+                          "name": "p3v",
+                          "type": "text"
+                        }
+                      ],
+                      "cornerRadius": 18,
+                      "fill": "#101A2D",
+                      "gap": 8,
+                      "id": "Yb6f4",
+                      "layout": "vertical",
+                      "name": "pass3",
+                      "padding": [
+                        16,
+                        18
+                      ],
+                      "stroke": {
+                        "fill": "#24324A",
+                        "thickness": 1
+                      },
+                      "type": "frame",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "gap": 14,
+                  "id": "a1TyN",
+                  "layout": "vertical",
+                  "name": "fields3",
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "children": [
+                    {
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "content": "登入並恢復工作區",
+                          "fill": "#0A0A0A",
+                          "fontFamily": "Inter",
+                          "fontSize": 15,
+                          "fontWeight": "600",
+                          "id": "qrJJo",
+                          "name": "cta3t",
+                          "type": "text"
+                        },
+                        {
+                          "fill": "#0A0A0A",
+                          "height": 16,
+                          "iconFontFamily": "lucide",
+                          "iconFontName": "arrow-right",
+                          "id": "t5xUK",
+                          "name": "cta3i",
+                          "type": "icon_font",
+                          "width": 16
+                        }
+                      ],
+                      "cornerRadius": 18,
+                      "fill": "#C9A962",
+                      "gap": 8,
+                      "id": "TtC33",
+                      "justifyContent": "center",
+                      "name": "cta3",
+                      "padding": [
+                        16,
+                        20
+                      ],
+                      "type": "frame",
+                      "width": "fill_container"
+                    },
+                    {
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "fill": "#60A5FA",
+                          "height": 16,
+                          "iconFontFamily": "lucide",
+                          "iconFontName": "sparkles",
+                          "id": "lM1cn",
+                          "name": "oauth3i",
+                          "type": "icon_font",
+                          "width": 16
+                        },
+                        {
+                          "content": "使用一次性安全連結",
+                          "fill": "#E2E8F0",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600",
+                          "id": "ApB2a",
+                          "name": "oauth3t",
+                          "type": "text"
+                        }
+                      ],
+                      "cornerRadius": 18,
+                      "fill": "#101A2D",
+                      "gap": 10,
+                      "id": "Vrf2a",
+                      "justifyContent": "center",
+                      "name": "oauth3",
+                      "padding": [
+                        15,
+                        18
+                      ],
+                      "stroke": {
+                        "fill": "#24324A",
+                        "thickness": 1
+                      },
+                      "type": "frame",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "gap": 14,
+                  "id": "aNogS",
+                  "layout": "vertical",
+                  "name": "actions3",
+                  "type": "frame",
+                  "width": "fill_container"
+                },
+                {
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "fill": "#60A5FA",
+                      "height": 16,
+                      "iconFontFamily": "lucide",
+                      "iconFontName": "lock-keyhole",
+                      "id": "j4GnU",
+                      "name": "f3i",
+                      "type": "icon_font",
+                      "width": 16
+                    },
+                    {
+                      "content": "最近的家庭面板會在驗證後立即恢復。",
+                      "fill": "#94A3B8",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "id": "cXLNI",
+                      "name": "f3t",
+                      "textGrowth": "fixed-width",
+                      "type": "text",
+                      "width": "fill_container"
+                    }
+                  ],
+                  "gap": 12,
+                  "id": "XRy1h",
+                  "name": "foot3",
+                  "type": "frame",
+                  "width": "fill_container"
+                }
+              ],
+              "cornerRadius": 28,
+              "fill": {
+                "colors": [
+                  {
+                    "color": "#14213A",
+                    "position": 0
+                  },
+                  {
+                    "color": "#0B1220",
+                    "position": 1
+                  }
+                ],
+                "enabled": true,
+                "gradientType": "linear",
+                "rotation": 180,
+                "size": {
+                  "height": 1
+                },
+                "type": "gradient"
+              },
+              "gap": 22,
+              "id": "gGnq8",
+              "layout": "vertical",
+              "name": "card3",
+              "padding": 34,
+              "stroke": {
+                "fill": "#24324A",
+                "thickness": 1
+              },
+              "type": "frame",
+              "width": 460
+            }
+          ],
+          "height": "fill_container",
+          "id": "hPzsZ",
+          "justifyContent": "center",
+          "layout": "vertical",
+          "name": "right3",
+          "type": "frame",
+          "width": 560
+        }
+      ],
+      "fill": "#0F172A",
+      "height": 960,
+      "id": "5yXmu",
+      "name": "Concept 3 - Modern Fintech Portal",
+      "type": "frame",
+      "width": 1440,
+      "x": 3040,
+      "y": 0
+    }
+  ]
+}
