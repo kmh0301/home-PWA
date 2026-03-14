@@ -12,9 +12,7 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import {
   Field,
@@ -42,52 +40,38 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
   const mode = params.mode === "register" ? "register" : "login";
   const next = params.next ?? "/";
   const statusTone = params.error ? "error" : params.message ? "success" : null;
+  const title = mode === "register" ? "Create your account" : "Sign in to continue";
+  const description =
+    mode === "register"
+      ? "Set up your secure account first. The app will route you into the right next step after verification."
+      : "Use your email and password to return to your shared household workspace.";
 
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-lg flex-col justify-center px-4 py-10">
-      <section className="flex flex-col gap-8">
-        <div className="flex flex-col gap-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-            家庭協作帳本
+    <main className="mx-auto flex min-h-screen w-full max-w-md flex-col justify-center px-4 py-8 sm:py-10">
+      <section className="flex flex-col gap-5">
+        <div className="flex flex-col gap-3">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted-foreground">
+            Home PWA
           </p>
           <div className="flex flex-col gap-2">
-            <h1 className="max-w-md text-4xl font-semibold tracking-tight text-foreground">
-              {mode === "register" ? "建立安全入口，開始設定你的 household" : "安全登入，回到你們的共享空間"}
+            <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+              {title}
             </h1>
-            <p className="max-w-md text-sm leading-6 text-muted-foreground">
-              {mode === "register"
-                ? "完成註冊後，你可以繼續建立 household、邀請伴侶，並開始共享帳本。"
-                : "登入後，系統會把你帶回屬於自己 household 狀態的正確入口。"}
+            <p className="max-w-sm text-sm leading-6 text-muted-foreground">
+              {description}
             </p>
-          </div>
-          <div className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-card px-3 py-2 text-sm text-muted-foreground shadow-[0_1px_4px_rgba(28,25,23,0.04)]">
-            <ShieldCheck className="size-4 text-primary" />
-            受保護 session 與 household-aware routing
           </div>
         </div>
 
-        <Card className="overflow-hidden rounded-[28px] border-border bg-card shadow-[0_20px_60px_rgba(28,25,23,0.08)]">
-          <div className="h-1 w-full bg-gradient-to-r from-primary via-primary to-secondary/70" />
-          <CardHeader className="flex flex-col gap-3 p-6 sm:p-8">
-            <div className="flex flex-col gap-1">
-              <CardTitle className="text-2xl text-card-foreground">
-                {mode === "register" ? "Create your account" : "Welcome back"}
-              </CardTitle>
-              <CardDescription className="text-sm leading-6 text-muted-foreground">
-                {mode === "register"
-                  ? "用同一個入口完成註冊、驗證電郵，然後繼續 household setup。"
-                  : "用 email、password 或 OAuth 方式登入，之後系統會自動判斷下一步。"}
-              </CardDescription>
-            </div>
-
-            <div className="grid grid-cols-2 rounded-2xl border border-border/80 bg-muted/70 p-1">
+        <Card className="overflow-hidden rounded-[28px] border-border bg-card shadow-[0_18px_48px_rgba(28,25,23,0.08)]">
+          <div className="h-1 w-full bg-primary" />
+          <CardHeader className="flex flex-col gap-4 p-6 sm:p-8">
+            <div className="grid grid-cols-2 rounded-2xl border border-border bg-muted/60 p-1">
               <Link
                 href={`/login?mode=login${next ? `&next=${encodeURIComponent(next)}` : ""}`}
                 className={cn(
                   "rounded-xl px-4 py-2.5 text-center text-sm font-semibold transition-colors",
-                  mode === "login"
-                    ? "bg-card text-foreground shadow-[0_1px_2px_rgba(28,25,23,0.05)]"
-                    : "text-muted-foreground hover:text-foreground",
+                  mode === "login" ? "bg-card text-foreground" : "text-muted-foreground hover:text-foreground",
                 )}
               >
                 Login
@@ -97,18 +81,24 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
                 className={cn(
                   "rounded-xl px-4 py-2.5 text-center text-sm font-semibold transition-colors",
                   mode === "register"
-                    ? "bg-card text-foreground shadow-[0_1px_2px_rgba(28,25,23,0.05)]"
+                    ? "bg-card text-foreground"
                     : "text-muted-foreground hover:text-foreground",
                 )}
               >
                 Register
               </Link>
             </div>
+
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <ShieldCheck className="size-4 text-primary" aria-hidden="true" />
+              <span>Secure session and protected household routing</span>
+            </div>
           </CardHeader>
 
           <CardContent className="flex flex-col gap-6 p-6 pt-0 sm:p-8 sm:pt-0">
             {statusTone ? (
               <Alert
+                aria-live="polite"
                 className={cn(
                   "rounded-2xl border px-4 py-4",
                   statusTone === "error"
@@ -137,6 +127,8 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
                     <FieldContent>
                       <FieldLabel htmlFor="displayName">Display name</FieldLabel>
                       <Input
+                        autoComplete="nickname"
+                        autoCapitalize="words"
                         id="displayName"
                         name="displayName"
                         placeholder="Alex"
@@ -154,8 +146,11 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
                   <FieldContent>
                     <FieldLabel htmlFor="email">Email</FieldLabel>
                     <Input
+                      autoCapitalize="none"
+                      autoComplete="email"
                       id="email"
                       name="email"
+                      spellCheck={false}
                       type="email"
                       placeholder="alex@example.com"
                       required
@@ -168,6 +163,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
                   <FieldContent>
                     <FieldLabel htmlFor="password">Password</FieldLabel>
                     <Input
+                      autoComplete={mode === "register" ? "new-password" : "current-password"}
                       id="password"
                       name="password"
                       type="password"
@@ -183,6 +179,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
                     <FieldContent>
                       <FieldLabel htmlFor="passwordConfirm">Confirm password</FieldLabel>
                       <Input
+                        autoComplete="new-password"
                         id="passwordConfirm"
                         name="passwordConfirm"
                         type="password"
@@ -214,7 +211,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
               </div>
             </form>
 
-            <FieldSeparator>alternative sign in</FieldSeparator>
+            <FieldSeparator>other options</FieldSeparator>
 
             <div className="grid gap-2.5">
               {(["google", "apple"] as const).map((provider) => (
@@ -235,9 +232,15 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 
             <Separator />
 
-            <p className="text-sm leading-6 text-muted-foreground">
-              你的 session 只會帶你進入屬於自己 household 的流程與資料範圍。
-            </p>
+            <div className="flex items-center justify-between gap-3 text-sm text-muted-foreground">
+              <p>Need access to a shared home?</p>
+              <Link
+                href="/onboarding/join"
+                className="font-semibold text-primary transition-colors hover:text-primary/80"
+              >
+                Use invite code
+              </Link>
+            </div>
           </CardContent>
         </Card>
       </section>
