@@ -8,8 +8,21 @@ test("pwa config does not enable front-end navigation caching", () => {
   assert.doesNotMatch(source, /cacheOnFrontEndNav:\s*true/);
 });
 
+test("next config does not wrap the app with next-pwa", () => {
+  const source = readFileSync(new URL("../../next.config.ts", import.meta.url), "utf8");
+
+  assert.doesNotMatch(source, /withPWA/);
+});
+
 test("manifest start_url uses the app entry route instead of dashboard", () => {
   const source = readFileSync(new URL("../app/manifest.ts", import.meta.url), "utf8");
 
   assert.match(source, /start_url:\s*"\/"/);
+});
+
+test("service worker file actively unregisters old workers and clears caches", () => {
+  const source = readFileSync(new URL("../../public/sw.js", import.meta.url), "utf8");
+
+  assert.match(source, /registration\.unregister/);
+  assert.match(source, /caches\.keys/);
 });
