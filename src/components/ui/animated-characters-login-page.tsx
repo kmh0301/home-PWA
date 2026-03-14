@@ -623,12 +623,12 @@ function AnimatedCharactersLoginPage({
 
           <div className="mb-10 text-center">
             <h1 className="mb-2 text-3xl font-bold tracking-tight">
-              {isRegister ? "Create your account" : "Welcome back!"}
+              {isRegister ? "建立你哋的家庭空間" : "返到你哋今晚嘅家庭空間"}
             </h1>
             <p className="text-sm text-muted-foreground">
               {isRegister
-                ? "Set up your account to start collaborating"
-                : "Please enter your details"}
+                ? "建立帳戶後，就可以開始同步家務、買餸同共享安排"
+                : "登入後繼續查看買餸、家務同共享安排"}
             </p>
           </div>
 
@@ -753,7 +753,7 @@ function AnimatedCharactersLoginPage({
             </div>
 
             <Button type="submit" className="h-12 w-full text-base font-medium" size="lg">
-              {isRegister ? "Create account" : "Log in"}
+              {isRegister ? "建立帳戶並開始協作" : "登入並查看今晚安排"}
               <ArrowRight data-icon="inline-end" />
             </Button>
           </form>
@@ -768,13 +768,13 @@ function AnimatedCharactersLoginPage({
                 type="submit"
               >
                 <Mail className="mr-2 size-5" />
-                Continue with Google
+                使用 Google 繼續
               </Button>
             </form>
           </div>
 
           <div className="mt-8 text-center text-sm text-muted-foreground">
-            {isRegister ? "Already have an account?" : "Don't have an account?"}{" "}
+            {isRegister ? "已經有帳戶？" : "未有家庭空間？"}{" "}
             <Link
               href={
                 isRegister
@@ -783,7 +783,7 @@ function AnimatedCharactersLoginPage({
               }
               className="font-medium text-foreground hover:underline"
             >
-              {isRegister ? "Log in" : "Sign Up"}
+              {isRegister ? "返回登入" : "建立帳戶"}
             </Link>
           </div>
         </div>

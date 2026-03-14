@@ -8,35 +8,17 @@ import {
   getNextOnboardingRoute,
   getOnboardingState,
   isAllowedOnboardingRoute,
-  type OnboardingRoute,
 } from "@/lib/onboarding/state";
+import { getRequestedOnboardingRouteFromHeaders } from "@/lib/onboarding/request-route";
 
 type OnboardingLayoutProps = {
   children: ReactNode;
 };
 
-function getOnboardingRouteFromPathname(pathname: string): OnboardingRoute | null {
-  switch (pathname) {
-    case "/onboarding/create":
-    case "/onboarding/join":
-    case "/onboarding/join/success":
-    case "/onboarding/accounts":
-      return pathname;
-    default:
-      return null;
-  }
-}
-
 async function getRequestedOnboardingRoute() {
   const headerStore = await headers();
-  const nextUrl = headerStore.get("next-url");
-  const requestUrl = nextUrl ? new URL(nextUrl, "http://localhost") : null;
-  const pathname = getOnboardingRouteFromPathname(requestUrl?.pathname ?? "");
 
-  return {
-    pathname,
-    joined: requestUrl?.searchParams.get("joined") === "1",
-  };
+  return getRequestedOnboardingRouteFromHeaders(headerStore);
 }
 
 export default async function OnboardingLayout({ children }: OnboardingLayoutProps) {

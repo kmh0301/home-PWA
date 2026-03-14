@@ -5,9 +5,17 @@ import { createServerClient } from "@supabase/ssr";
 import { env } from "@/lib/env";
 import type { Database } from "@/types/database.types";
 
-export async function updateSession(request: NextRequest) {
+type UpdateSessionOptions = {
+  requestHeaders?: Headers;
+};
+
+export async function updateSession(request: NextRequest, options: UpdateSessionOptions = {}) {
+  const requestHeaders = options.requestHeaders ?? request.headers;
+
   let response = NextResponse.next({
-    request,
+    request: {
+      headers: requestHeaders,
+    },
   });
 
   const supabase = createServerClient<Database>(
@@ -22,7 +30,9 @@ export async function updateSession(request: NextRequest) {
           cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
 
           response = NextResponse.next({
-            request,
+            request: {
+              headers: requestHeaders,
+            },
           });
 
           cookiesToSet.forEach(({ name, value, options }) => {

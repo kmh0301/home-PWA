@@ -15,8 +15,14 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const { user, response } = await updateSession(request);
   const { pathname, search } = request.nextUrl;
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-pathname", pathname);
+  requestHeaders.set("x-search", search);
+
+  const { user, response } = await updateSession(request, {
+    requestHeaders,
+  });
   const isProtected = isProtectedAppPath(pathname);
   const isPublicAuthRoute = isPublicAuthPath(pathname);
   const isAuthCallbackExchange =
@@ -34,6 +40,8 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL(next, request.url));
   }
 
+  response.headers.set("x-pathname", pathname);
+  response.headers.set("x-search", search);
   return response;
 }
 
