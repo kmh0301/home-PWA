@@ -2,8 +2,8 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: unknown
-last_updated: "2026-03-14T02:40:56.888Z"
+status: in_progress
+last_updated: "2026-03-14T05:21:30Z"
 progress:
   total_phases: 7
   completed_phases: 1
@@ -14,7 +14,7 @@ progress:
 # Planning State: Home PWA
 
 **Project reference:** `/Users/manheiko/Documents/GitHub/home-PWA/.planning/PROJECT.md`  
-**Current focus:** Phase 1: Secure Foundation And Household Boundary
+**Current focus:** Phase 2 Plan 02-01: Household onboarding RPC hardening completed
 
 ## Initialization Memory
 
@@ -32,5 +32,12 @@ progress:
 - Unmapped requirements: 0
 - Coverage: 100%
 
+## Latest Execution Memory
+
+- Phase 2 Plan 02-01 completed the database and server-action boundary for household onboarding.
+- `household_members.user_id` is now unique in v1, and `households.owner_user_id` authorizes invite regeneration.
+- Onboarding now uses status-based RPCs for create, validate, claim, and regenerate flows instead of app-layer multi-write bootstrap logic.
+- Repeatable verification lives in `supabase/verify/phase-2-household-onboarding.sql`; local execution still needs a reachable Supabase/Postgres environment.
+
 ---
-*Last updated: 2026-03-13 after roadmap creation*
+*Last updated: 2026-03-14 after Phase 2 Plan 02-01 execution*
