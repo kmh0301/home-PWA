@@ -46,7 +46,7 @@ export default async function OnboardingLayout({ children }: OnboardingLayoutPro
   const nextRoute = getNextOnboardingRoute(state, { joined: requestedRoute.joined });
 
   if (
-    !requestedRoute.pathname ||
+    requestedRoute.pathname &&
     !isAllowedOnboardingRoute(state, requestedRoute.pathname, { joined: requestedRoute.joined })
   ) {
     redirect(nextRoute);
