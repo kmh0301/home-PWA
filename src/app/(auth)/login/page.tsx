@@ -3,28 +3,40 @@ import {
   ArrowRight,
   CalendarRange,
   CircleDollarSign,
+  Shield,
   ShoppingBasket,
 } from "lucide-react";
+import {
+  Cormorant_Garamond,
+  Inter,
+  Noto_Serif_TC,
+} from "next/font/google";
 
 import {
-  resetPasswordAction,
   signInAction,
-  signInWithOAuthAction,
   signUpAction,
 } from "@/app/(auth)/login/actions";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import {
-  Field,
-  FieldContent,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-  FieldSeparator,
-} from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-login-sans",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["500"],
+  variable: "--font-login-display",
+});
+
+const notoSerifTc = Noto_Serif_TC({
+  subsets: ["latin"],
+  weight: ["500", "600"],
+  variable: "--font-login-serif-cjk",
+});
 
 type LoginPageProps = {
   searchParams?: Promise<{
@@ -35,260 +47,248 @@ type LoginPageProps = {
   }>;
 };
 
+type SummaryItem = {
+  icon: React.ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
+  label: string;
+  text: string;
+};
+
+const familySummary: SummaryItem[] = [
+  {
+    icon: ShoppingBasket,
+    label: "GROCERIES",
+    text: "今晚買餸清單等待確認",
+  },
+  {
+    icon: CalendarRange,
+    label: "SCHEDULE",
+    text: "家庭行事與飯桌安排已同步",
+  },
+  {
+    icon: CircleDollarSign,
+    label: "BUDGET",
+    text: "共享預算與家務輪值一眼睇晒",
+  },
+];
+
+function serifClassName() {
+  return `${cormorant.variable} ${notoSerifTc.variable} font-[var(--font-login-display),var(--font-login-serif-cjk),serif]`;
+}
+
+function sansClassName() {
+  return `${inter.variable} font-[var(--font-login-sans),sans-serif]`;
+}
+
+function FieldLine({
+  id,
+  label,
+  name,
+  type = "text",
+  autoComplete,
+  autoCapitalize,
+  spellCheck,
+  placeholder,
+  required = true,
+}: {
+  id: string;
+  label: string;
+  name: string;
+  type?: React.ComponentProps<typeof Input>["type"];
+  autoComplete?: string;
+  autoCapitalize?: React.ComponentProps<typeof Input>["autoCapitalize"];
+  spellCheck?: boolean;
+  placeholder: string;
+  required?: boolean;
+}) {
+  return (
+    <div className="flex w-full flex-col gap-2 border-b border-[#d9c6b8] pb-[14px]">
+      <label
+        htmlFor={id}
+        className={`${sansClassName()} text-xs font-semibold tracking-[0.08em] text-[#a08370]`}
+      >
+        {label}
+      </label>
+      <Input
+        id={id}
+        name={name}
+        type={type}
+        autoComplete={autoComplete}
+        autoCapitalize={autoCapitalize}
+        spellCheck={spellCheck}
+        placeholder={placeholder}
+        required={required}
+        className={`${serifClassName()} h-auto rounded-none border-0 bg-transparent px-0 py-0 text-[1.375rem] leading-none text-[#5a3728] shadow-none placeholder:text-[#5a3728] focus-visible:ring-0 focus-visible:ring-offset-0 md:text-[1.375rem]`}
+      />
+    </div>
+  );
+}
+
 export default async function LoginPage({ searchParams }: LoginPageProps) {
   const params = (await searchParams) ?? {};
   const mode = params.mode === "register" ? "register" : "login";
   const next = params.next ?? "/";
   const statusTone = params.error ? "error" : params.message ? "success" : null;
-  const title = mode === "register" ? "建立共享家庭空間" : "登入返到家庭空間";
-  const description =
-    mode === "register"
-      ? "完成註冊之後，你可以開始整理共享預算、家務輪值和今晚安排。"
-      : "即刻查看今晚行程、購物安排同共享預算更新。";
-  const familySummary = [
-    {
-      icon: ShoppingBasket,
-      label: "GROCERIES",
-      text: "今晚買餸清單等待確認",
-    },
-    {
-      icon: CalendarRange,
-      label: "SCHEDULE",
-      text: "家庭行事與飯桌安排已同步",
-    },
-    {
-      icon: CircleDollarSign,
-      label: "BUDGET",
-      text: "共享預算與家務輪值一眼睇晒",
-    },
-  ];
+  const isRegister = mode === "register";
+
+  const heroTitle = isRegister
+    ? "建立你哋的共享家庭空間。"
+    : "登入返到你哋今晚嘅家庭總覽。";
+  const heroCopy = isRegister
+    ? "買餸、家務、飯桌安排同共享支出，會喺建立帳戶之後放進同一個清楚的入口。"
+    : "買餸、家務、飯桌安排同共享支出，應該喺同一個入口後面清楚接住。";
+  const formTitle = isRegister ? "建立共享家庭空間" : "登入返到家庭空間";
+  const formCopy = isRegister
+    ? "完成註冊之後，你可以開始整理共享預算、家務輪值和今晚安排。"
+    : "即刻查看今晚行程、購物安排同共享預算更新。";
 
   return (
-    <main className="min-h-screen bg-[#fff7f1] text-[#5a3728]">
-      <section className="mx-auto flex min-h-screen w-full max-w-[1440px] flex-col gap-10 px-6 py-5 sm:px-8 md:justify-center md:px-12 md:py-12 lg:grid lg:grid-cols-[minmax(0,1fr)_540px] lg:gap-16 lg:px-16 xl:px-24">
-        <div className="flex flex-col gap-5 lg:max-w-[640px] lg:gap-6">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#9a7b66]">
+    <main
+      className={`${sansClassName()} min-h-screen bg-[#fff7f1] text-[#5a3728]`}
+    >
+      <section className="mx-auto flex min-h-screen w-full max-w-[1440px] flex-col gap-6 px-6 py-5 lg:grid lg:min-h-[960px] lg:grid-cols-[760px_540px] lg:gap-0 lg:px-0 lg:py-0">
+        <div className="flex flex-col gap-3 lg:bg-[#f7ecdf] lg:px-24 lg:py-24">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#9a7b66] lg:text-[12px] lg:tracking-[0.12em]">
             今晚上線 / 家庭總覽入口
           </p>
-          <div className="flex flex-col gap-3">
-            <h1 className="font-serif text-[2.125rem] leading-[0.98] tracking-tight text-[#5a3728] sm:text-5xl lg:text-[4.25rem]">
-              {mode === "register" ? "建立你哋的共享家庭空間。" : "登入返到你哋今晚嘅家庭總覽。"}
-            </h1>
-            <p className="max-w-[35rem] text-sm leading-6 text-[#8a6b57] sm:text-base">
-              {mode === "register"
-                ? "買餸、家務、飯桌安排同共享支出，會喺建立帳戶之後放進同一個清楚的入口。"
-                : "買餸、家務、飯桌安排同共享支出，應該喺同一個入口後面清楚接住。"}
-            </p>
-          </div>
+          <h1
+            className={`${serifClassName()} max-w-full text-[2.125rem] leading-none tracking-tight text-[#5a3728] lg:max-w-[600px] lg:text-[68px] lg:leading-[0.98]`}
+          >
+            {heroTitle}
+          </h1>
+          <p className="max-w-full text-sm leading-6 text-[#8a6b57] lg:max-w-[560px] lg:text-[17px] lg:leading-[1.6]">
+            {heroCopy}
+          </p>
 
-          {mode === "login" ? (
-            <div className="hidden max-w-[36.875rem] flex-col lg:flex">
+          {!isRegister ? (
+            <div className="hidden w-full max-w-[590px] flex-col gap-0 lg:flex">
               {familySummary.map(({ icon: Icon, label, text }) => (
                 <div
                   key={label}
-                  className="flex items-center gap-3 border-b border-[#e8d8c9] py-3"
+                  className="flex w-full items-center gap-[14px] border-b border-[#e8d8c9] py-[14px]"
                 >
-                  <Icon className="size-4 text-[#c9735a]" aria-hidden="true" />
-                  <p className="flex flex-1 flex-wrap items-center gap-x-3 gap-y-1">
-                    <span className="text-[0.625rem] font-bold uppercase tracking-[0.12em] text-[#b15f48]">
+                  <Icon
+                    className="size-4 shrink-0 text-[#c9735a]"
+                    aria-hidden={true}
+                  />
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#b15f48]">
                       {label}
                     </span>
-                    <span className="text-[0.95rem] font-semibold text-[#5a3728]">
+                    <span className="text-[15px] font-semibold text-[#5a3728]">
                       {text}
                     </span>
-                  </p>
+                  </div>
                 </div>
               ))}
             </div>
           ) : null}
         </div>
 
-        <div className="w-full lg:flex lg:justify-end">
-          <div className="w-full max-w-[33.75rem] bg-transparent px-0 py-0 sm:px-0 lg:px-0">
-            <div className="mb-5 hidden h-[4.5rem] w-px bg-[#d9c6b8] lg:block" />
-            <div className="flex flex-col gap-2">
-              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-[#a08370]">
-                Family Access
-              </p>
-              <h2 className="font-serif text-[2.125rem] leading-none text-[#5a3728] sm:text-[2.875rem]">
-                {title}
-              </h2>
-              <p className="max-w-[26rem] text-sm leading-6 text-[#8a6b57]">
-                {description}
-              </p>
-            </div>
+        <div className="flex flex-col gap-[14px] pb-7 lg:px-[52px] lg:pt-[84px] lg:pr-16 lg:pb-[84px]">
+          <div className="hidden h-[72px] w-px bg-[#d9c6b8] lg:block" />
 
-            {statusTone ? (
-              <Alert
-                aria-live="polite"
-                className={cn(
-                  "mt-5 rounded-none border-x-0 border-b-0 border-t px-0 py-4",
-                  statusTone === "error"
-                    ? "border-destructive/30 bg-transparent text-destructive"
-                    : "border-[color:var(--positive)]/30 bg-transparent text-[color:var(--positive)]",
-                )}
-              >
-                <AlertTitle className="text-sm font-semibold">
-                  {statusTone === "error" ? "請先處理以下問題" : "請查看你的電郵"}
-                </AlertTitle>
-                <AlertDescription>
-                  {params.error ?? params.message}
-                </AlertDescription>
-              </Alert>
+          <div className="flex flex-col gap-[14px]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#a08370]">
+              FAMILY ACCESS
+            </p>
+            <h2
+              className={`${serifClassName()} text-[2.125rem] leading-none text-[#5a3728] lg:text-[46px]`}
+            >
+              {formTitle}
+            </h2>
+            <p className="max-w-full text-sm leading-6 text-[#8a6b57] lg:max-w-[420px] lg:text-base">
+              {formCopy}
+            </p>
+          </div>
+
+          {statusTone ? (
+            <Alert
+              aria-live="polite"
+              className={cn(
+                "rounded-none border-x-0 border-b-0 border-t bg-transparent px-0 py-4",
+                statusTone === "error"
+                  ? "border-destructive/30 text-destructive"
+                  : "border-[color:var(--positive)]/30 text-[color:var(--positive)]",
+              )}
+            >
+              <AlertTitle className="text-sm font-semibold">
+                {statusTone === "error" ? "請先處理以下問題" : "請查看你的電郵"}
+              </AlertTitle>
+              <AlertDescription>{params.error ?? params.message}</AlertDescription>
+            </Alert>
+          ) : null}
+
+          <form
+            action={isRegister ? signUpAction : signInAction}
+            className="flex w-full flex-col gap-[18px] lg:max-w-[460px]"
+          >
+            <input name="next" type="hidden" value={next} />
+
+            {isRegister ? (
+              <FieldLine
+                id="displayName"
+                name="displayName"
+                label="顯示名稱"
+                autoComplete="nickname"
+                autoCapitalize="words"
+                placeholder="例如：阿晴"
+              />
             ) : null}
 
-            <form
-              action={mode === "register" ? signUpAction : signInAction}
-              className="mt-6 flex flex-col gap-6"
-            >
-              <input name="next" type="hidden" value={next} />
+            <FieldLine
+              id="email"
+              name="email"
+              label="電郵地址"
+              type="email"
+              autoComplete="email"
+              autoCapitalize="none"
+              spellCheck={false}
+              placeholder="name@example.com"
+            />
 
-              <FieldGroup className="gap-4">
-                {mode === "register" ? (
-                  <Field>
-                    <FieldContent>
-                      <FieldLabel
-                        htmlFor="displayName"
-                        className="text-xs font-semibold tracking-[0.08em] text-[#a08370]"
-                      >
-                        顯示名稱
-                      </FieldLabel>
-                      <Input
-                        autoComplete="nickname"
-                        autoCapitalize="words"
-                        id="displayName"
-                        name="displayName"
-                        placeholder="例如：阿晴"
-                        required
-                        className="h-auto rounded-none border-x-0 border-t-0 border-b-[#d9c6b8] bg-transparent px-0 pb-3 pt-0 text-lg text-[#5a3728] placeholder:text-[#b79c8a] focus-visible:ring-0 focus-visible:ring-offset-0"
-                      />
-                      <FieldDescription>
-                        這個名稱會顯示在家庭邀請和共享紀錄中。
-                      </FieldDescription>
-                    </FieldContent>
-                  </Field>
-                ) : null}
+            <FieldLine
+              id="password"
+              name="password"
+              label="密碼"
+              type="password"
+              autoComplete={isRegister ? "new-password" : "current-password"}
+              placeholder="••••••••"
+            />
 
-                <Field>
-                  <FieldContent>
-                    <FieldLabel
-                      htmlFor="email"
-                      className="text-xs font-semibold tracking-[0.08em] text-[#a08370]"
-                    >
-                      電郵地址
-                    </FieldLabel>
-                    <Input
-                      autoCapitalize="none"
-                      autoComplete="email"
-                      id="email"
-                      name="email"
-                      spellCheck={false}
-                      type="email"
-                      placeholder="name@example.com"
-                      required
-                      className="h-auto rounded-none border-x-0 border-t-0 border-b-[#d9c6b8] bg-transparent px-0 pb-3 pt-0 text-lg text-[#5a3728] placeholder:text-[#b79c8a] focus-visible:ring-0 focus-visible:ring-offset-0"
-                    />
-                  </FieldContent>
-                </Field>
+            {isRegister ? (
+              <FieldLine
+                id="passwordConfirm"
+                name="passwordConfirm"
+                label="確認密碼"
+                type="password"
+                autoComplete="new-password"
+                placeholder="••••••••"
+              />
+            ) : null}
 
-                <Field>
-                  <FieldContent>
-                    <FieldLabel
-                      htmlFor="password"
-                      className="text-xs font-semibold tracking-[0.08em] text-[#a08370]"
-                    >
-                      密碼
-                    </FieldLabel>
-                    <Input
-                      autoComplete={mode === "register" ? "new-password" : "current-password"}
-                      id="password"
-                      name="password"
-                      type="password"
-                      placeholder="••••••••"
-                      required
-                      className="h-auto rounded-none border-x-0 border-t-0 border-b-[#d9c6b8] bg-transparent px-0 pb-3 pt-0 text-lg text-[#5a3728] placeholder:text-[#b79c8a] focus-visible:ring-0 focus-visible:ring-offset-0"
-                    />
-                  </FieldContent>
-                </Field>
-
-                {mode === "register" ? (
-                  <Field>
-                    <FieldContent>
-                      <FieldLabel
-                        htmlFor="passwordConfirm"
-                        className="text-xs font-semibold tracking-[0.08em] text-[#a08370]"
-                      >
-                        確認密碼
-                      </FieldLabel>
-                      <Input
-                        autoComplete="new-password"
-                        id="passwordConfirm"
-                        name="passwordConfirm"
-                        type="password"
-                        placeholder="••••••••"
-                        required
-                        className="h-auto rounded-none border-x-0 border-t-0 border-b-[#d9c6b8] bg-transparent px-0 pb-3 pt-0 text-lg text-[#5a3728] placeholder:text-[#b79c8a] focus-visible:ring-0 focus-visible:ring-offset-0"
-                      />
-                    </FieldContent>
-                  </Field>
-                ) : null}
-              </FieldGroup>
-
-              <div className="flex flex-col gap-4">
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="h-12 rounded-none bg-[#c9735a] px-6 text-sm font-semibold text-[#fff8f2] hover:bg-[#b8634a]"
-                >
-                  {mode === "register" ? "建立帳戶" : "登入"}
-                  <ArrowRight data-icon="inline-end" />
-                </Button>
-
-                {mode === "login" ? (
-                  <Button
-                    type="submit"
-                    formAction={resetPasswordAction}
-                    variant="link"
-                    className="h-auto justify-start px-0 text-sm font-semibold text-[#b15f48]"
-                  >
-                    忘記密碼？
-                  </Button>
-                ) : null}
-              </div>
-            </form>
-
-            <FieldSeparator className="mt-6">其他登入方式</FieldSeparator>
-
-            <div className="grid gap-3">
-              {(["google", "apple"] as const).map((provider) => (
-                <form key={provider} action={signInWithOAuthAction}>
-                  <input name="provider" type="hidden" value={provider} />
-                  <input name="next" type="hidden" value={next} />
-                  <Button
-                    type="submit"
-                    variant="outline"
-                    size="lg"
-                    className="h-11 w-full justify-center rounded-none border-x-0 border-t-0 border-b-[#d9c6b8] bg-transparent px-0 text-sm text-[#5a3728] hover:bg-transparent hover:text-[#5a3728]"
-                  >
-                    使用 {provider === "google" ? "Google" : "Apple"} 登入
-                  </Button>
-                </form>
-              ))}
-            </div>
-
-            <Separator className="my-6 bg-[#e8d8c9]" />
-
-            <div className="flex items-start justify-between gap-4 text-sm text-[#8a6b57]">
-              <p className="max-w-[14rem] leading-6">
-                已有邀請連結或邀請碼？
-              </p>
-              <Link
-                href="/onboarding/join"
-                className="font-semibold text-[#b15f48] transition-colors hover:text-[#9d5233]"
+            <div className="flex flex-col gap-[14px] pt-1">
+              <Button
+                type="submit"
+                className="h-auto w-full rounded-none bg-[#c9735a] px-[18px] py-[15px] text-[13px] font-semibold text-[#fff8f2] hover:bg-[#bf6b53]"
               >
-                使用邀請碼
+                {isRegister ? "建立帳戶並開始協作" : "登入並查看今晚安排"}
+                <ArrowRight data-icon="inline-end" />
+              </Button>
+
+              <Link
+                href={isRegister ? `/login?next=${encodeURIComponent(next)}` : "/onboarding/join"}
+                className="text-[13px] font-semibold text-[#b15f48] transition-colors hover:text-[#9c543b]"
+              >
+                {isRegister ? "已有帳戶，返回登入" : "改用邀請連結進入"}
               </Link>
             </div>
+          </form>
+
+          <div className="flex w-full items-start gap-[10px] lg:max-w-[460px]">
+            <Shield className="mt-0.5 size-4 shrink-0 text-[#c9735a]" aria-hidden="true" />
+            <p className="max-w-full text-xs leading-5 text-[#8a6b57] lg:max-w-[430px]">
+              登入後會恢復最近一次家庭進度、任務同支出脈絡。
+            </p>
           </div>
         </div>
       </section>

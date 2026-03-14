@@ -3272,6 +3272,1926 @@
           ]
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "tUCz0",
+      "x": 0,
+      "y": 1080,
+      "name": "Concept 4 - Portal Grid",
+      "width": 1440,
+      "fill": "#081120",
+      "layout": "vertical",
+      "gap": 28,
+      "padding": [
+        28,
+        28,
+        40,
+        28
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "Syd6S",
+          "name": "topbar",
+          "width": "fill_container",
+          "fill": "#0D1A2E",
+          "stroke": {
+            "thickness": 1,
+            "fill": "#1C3255"
+          },
+          "padding": [
+            12,
+            18
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "cJpe7",
+              "name": "brand1",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "oK9YK",
+                  "name": "brandMark1",
+                  "rotation": 45,
+                  "width": 14,
+                  "height": 14,
+                  "fill": "#F59E0B"
+                },
+                {
+                  "type": "text",
+                  "id": "CTI7x",
+                  "name": "brandText1",
+                  "fill": "#F8FAFC",
+                  "content": "DISCOUNTHUB",
+                  "fontFamily": "IBM Plex Sans",
+                  "fontSize": 18,
+                  "fontWeight": "600",
+                  "letterSpacing": 1.5
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "QM7po",
+              "name": "nav1",
+              "gap": 28,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "aspIb",
+                  "name": "navText11",
+                  "fill": "#9DB4D6",
+                  "content": "Explore",
+                  "fontFamily": "IBM Plex Sans",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "deVSO",
+                  "name": "navText12",
+                  "fill": "#9DB4D6",
+                  "content": "Submit Deal",
+                  "fontFamily": "IBM Plex Sans",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "JR3wh",
+                  "name": "navCta1",
+                  "fill": "#F59E0B",
+                  "cornerRadius": 999,
+                  "padding": [
+                    10,
+                    16
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "kS1oI",
+                      "name": "navCtaText1",
+                      "fill": "#081120",
+                      "content": "Open Portal",
+                      "fontFamily": "IBM Plex Sans",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "RPfyA",
+          "name": "hero",
+          "width": "fill_container",
+          "gap": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "rODIh",
+              "name": "heroLeft1",
+              "width": "fill_container",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 180,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#10233F",
+                    "position": 0
+                  },
+                  {
+                    "color": "#0A1830",
+                    "position": 1
+                  }
+                ]
+              },
+              "cornerRadius": 24,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#1F3A63"
+              },
+              "layout": "vertical",
+              "gap": 18,
+              "padding": [
+                34,
+                30
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Qe8N9",
+                  "name": "badge1",
+                  "fill": "#7DD3FC",
+                  "content": "LIVE SAVINGS PORTAL",
+                  "fontFamily": "IBM Plex Sans",
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "SCM6s",
+                  "name": "head1",
+                  "fill": "#F8FAFC",
+                  "textGrowth": "fixed-width",
+                  "width": 760,
+                  "content": "Track real discounts before they disappear.",
+                  "lineHeight": 0.94,
+                  "fontFamily": "Space Grotesk",
+                  "fontSize": 66,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "L5qCT",
+                  "name": "sub1",
+                  "fill": "#B6C7E1",
+                  "textGrowth": "fixed-width",
+                  "width": 650,
+                  "content": "A search-first homepage for finding fresh offers, fast-moving coupons, and store signals in one command view.",
+                  "lineHeight": 1.45,
+                  "fontFamily": "IBM Plex Sans",
+                  "fontSize": 19
+                },
+                {
+                  "type": "frame",
+                  "id": "lqWeH",
+                  "name": "search1",
+                  "width": 720,
+                  "fill": "#EDF5FF",
+                  "cornerRadius": 22,
+                  "padding": [
+                    14,
+                    18
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "dolbO",
+                      "name": "searchWrap1",
+                      "gap": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "fgq0w",
+                          "name": "searchIcon1",
+                          "width": 18,
+                          "height": 18,
+                          "iconFontName": "search",
+                          "iconFontFamily": "lucide",
+                          "fill": "#315A96"
+                        },
+                        {
+                          "type": "text",
+                          "id": "qn0dL",
+                          "name": "searchText1",
+                          "fill": "#315A96",
+                          "content": "Search brands, codes, malls, categories",
+                          "fontFamily": "IBM Plex Sans",
+                          "fontSize": 16,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "lG2pi",
+                      "name": "searchBtn1",
+                      "fill": "#8B5CF6",
+                      "cornerRadius": 999,
+                      "padding": [
+                        10,
+                        18
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "bg4RY",
+                          "name": "searchBtnText1",
+                          "fill": "#F8FAFC",
+                          "content": "Scan Deals",
+                          "fontFamily": "IBM Plex Sans",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "tsLjB",
+              "name": "heroRight1",
+              "width": 420,
+              "layout": "vertical",
+              "gap": 18,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ab8kY",
+                  "name": "metric1",
+                  "fill": "#0E1E35",
+                  "cornerRadius": 24,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#1C3255"
+                  },
+                  "layout": "vertical",
+                  "gap": 10,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "IxCmc",
+                      "name": "metricLabel1",
+                      "fill": "#7DD3FC",
+                      "content": "Today's monitored savings",
+                      "fontFamily": "IBM Plex Sans",
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "letterSpacing": 1.4
+                    },
+                    {
+                      "type": "text",
+                      "id": "tCx8N",
+                      "name": "metricValue1",
+                      "fill": "#F8FAFC",
+                      "content": "284 live offers",
+                      "fontFamily": "Space Grotesk",
+                      "fontSize": 42,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "vDN9M",
+                      "name": "metricCopy1",
+                      "fill": "#A6BAD7",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "High-signal inventory refreshed across grocery, travel, fintech and daily essentials.",
+                      "lineHeight": 1.45,
+                      "fontFamily": "IBM Plex Sans",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "fPgJ4",
+                  "name": "list1",
+                  "fill": "#112540",
+                  "cornerRadius": 24,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#29456F"
+                  },
+                  "layout": "vertical",
+                  "gap": 14,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "VHWiq",
+                      "name": "listTitle1",
+                      "fill": "#F8FAFC",
+                      "content": "Fastest moving zones",
+                      "fontFamily": "IBM Plex Sans",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "MiMuz",
+                      "name": "chipRow1",
+                      "gap": 10,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "o40Xr",
+                          "name": "chip11",
+                          "fill": "#183459",
+                          "cornerRadius": 999,
+                          "padding": [
+                            8,
+                            12
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "s6ML3",
+                              "name": "chipText11",
+                              "fill": "#7DD3FC",
+                              "content": "Travel spikes",
+                              "fontFamily": "IBM Plex Sans",
+                              "fontSize": 12,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Qt1XP",
+                          "name": "chip12",
+                          "fill": "#2C224E",
+                          "cornerRadius": 999,
+                          "padding": [
+                            8,
+                            12
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "cjF03",
+                              "name": "chipText12",
+                              "fill": "#C4B5FD",
+                              "content": "Card cashback",
+                              "fontFamily": "IBM Plex Sans",
+                              "fontSize": 12,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "OvcNP",
+                      "name": "row1",
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "eqYJX",
+                          "name": "row1l",
+                          "fill": "#D5E3F6",
+                          "content": "Watsons / skincare",
+                          "fontFamily": "IBM Plex Sans",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "eDc2B",
+                          "name": "row1r",
+                          "fill": "#F59E0B",
+                          "content": "-32%",
+                          "fontFamily": "Space Grotesk",
+                          "fontSize": 20,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "CQHtK",
+                      "name": "row2",
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "E8g3r",
+                          "name": "row2l",
+                          "fill": "#D5E3F6",
+                          "content": "Asia Miles / flights",
+                          "fontFamily": "IBM Plex Sans",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "mLA6w",
+                          "name": "row2r",
+                          "fill": "#7DD3FC",
+                          "content": "x4 points",
+                          "fontFamily": "Space Grotesk",
+                          "fontSize": 20,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "AYwWN",
+          "name": "statRow1",
+          "width": "fill_container",
+          "gap": 18,
+          "children": [
+            {
+              "type": "frame",
+              "id": "mA3aX",
+              "name": "statCard11",
+              "width": "fill_container",
+              "fill": "#0D1A2E",
+              "cornerRadius": 18,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#1C3255"
+              },
+              "layout": "vertical",
+              "gap": 8,
+              "padding": 18,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "jykpN",
+                  "fill": "#8CA9D0",
+                  "content": "Verified merchants",
+                  "fontFamily": "IBM Plex Sans",
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                  "letterSpacing": 1.1
+                },
+                {
+                  "type": "text",
+                  "id": "4dLfO",
+                  "fill": "#F8FAFC",
+                  "content": "120+",
+                  "fontFamily": "Space Grotesk",
+                  "fontSize": 34,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "aMm5D",
+              "name": "statCard12",
+              "width": "fill_container",
+              "fill": "#0D1A2E",
+              "cornerRadius": 18,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#1C3255"
+              },
+              "layout": "vertical",
+              "gap": 8,
+              "padding": 18,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "bYbXN",
+                  "fill": "#8CA9D0",
+                  "content": "Tracked categories",
+                  "fontFamily": "IBM Plex Sans",
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                  "letterSpacing": 1.1
+                },
+                {
+                  "type": "text",
+                  "id": "ZZ6T1",
+                  "fill": "#F8FAFC",
+                  "content": "18 active lanes",
+                  "fontFamily": "Space Grotesk",
+                  "fontSize": 34,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "McxHo",
+              "name": "statCard13",
+              "width": "fill_container",
+              "fill": "#0D1A2E",
+              "cornerRadius": 18,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#1C3255"
+              },
+              "layout": "vertical",
+              "gap": 8,
+              "padding": 18,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Sf2YD",
+                  "fill": "#8CA9D0",
+                  "content": "Median publish age",
+                  "fontFamily": "IBM Plex Sans",
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                  "letterSpacing": 1.1
+                },
+                {
+                  "type": "text",
+                  "id": "Fo3Cw",
+                  "fill": "#F8FAFC",
+                  "content": "2h 14m",
+                  "fontFamily": "Space Grotesk",
+                  "fontSize": 34,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "icCiD",
+          "name": "section1",
+          "width": "fill_container",
+          "gap": 18,
+          "children": [
+            {
+              "type": "frame",
+              "id": "TixjG",
+              "name": "cat1",
+              "width": 360,
+              "fill": "#0D1A2E",
+              "cornerRadius": 22,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#1C3255"
+              },
+              "layout": "vertical",
+              "gap": 16,
+              "padding": 22,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "XRv0D",
+                  "fill": "#F8FAFC",
+                  "content": "Browse by signal",
+                  "fontFamily": "IBM Plex Sans",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "L8XpW",
+                  "fill": "#CFE0F5",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Beauty resets\nGrocery drops\nTravel alerts\nCard rewards",
+                  "lineHeight": 1.12,
+                  "fontFamily": "Space Grotesk",
+                  "fontSize": 28,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "pdHA0",
+              "name": "feed1",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 14,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "r51z7",
+                  "fill": "#F8FAFC",
+                  "content": "Featured now",
+                  "fontFamily": "IBM Plex Sans",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "MPRz1",
+                  "name": "feedCards1",
+                  "width": "fill_container",
+                  "gap": 14,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "pCQlT",
+                      "name": "card11",
+                      "width": "fill_container",
+                      "fill": "#EDF5FF",
+                      "cornerRadius": 20,
+                      "layout": "vertical",
+                      "gap": 8,
+                      "padding": 18,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "esvCh",
+                          "fill": "#315A96",
+                          "content": "MANNINGS",
+                          "fontFamily": "IBM Plex Sans",
+                          "fontSize": 11,
+                          "fontWeight": "600",
+                          "letterSpacing": 1.3
+                        },
+                        {
+                          "type": "text",
+                          "id": "8GpZQ",
+                          "fill": "#081120",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Buy 2 get 1 + extra bank rebate",
+                          "lineHeight": 1.05,
+                          "fontFamily": "Space Grotesk",
+                          "fontSize": 26,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "eJ5Ss",
+                      "name": "card12",
+                      "width": "fill_container",
+                      "fill": "#F6F0FF",
+                      "cornerRadius": 20,
+                      "layout": "vertical",
+                      "gap": 8,
+                      "padding": 18,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "2cTuy",
+                          "fill": "#6D28D9",
+                          "content": "TRIP.COM",
+                          "fontFamily": "IBM Plex Sans",
+                          "fontSize": 11,
+                          "fontWeight": "600",
+                          "letterSpacing": 1.3
+                        },
+                        {
+                          "type": "text",
+                          "id": "on58c",
+                          "fill": "#1F1445",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Weekend routes with stacked point bonuses",
+                          "lineHeight": 1.05,
+                          "fontFamily": "Space Grotesk",
+                          "fontSize": 26,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "eM0Hl",
+          "name": "final1",
+          "width": "fill_container",
+          "fill": "#112540",
+          "cornerRadius": 22,
+          "stroke": {
+            "thickness": 1,
+            "fill": "#29456F"
+          },
+          "padding": [
+            22,
+            24
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "BkEEz",
+              "fill": "#F8FAFC",
+              "content": "Built for search-first discovery, not homepage clutter.",
+              "fontFamily": "IBM Plex Sans",
+              "fontSize": 22,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "ZUbhK",
+              "name": "finalBtn1",
+              "fill": "#F59E0B",
+              "cornerRadius": 999,
+              "padding": [
+                12,
+                18
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "VD6Ld",
+                  "fill": "#081120",
+                  "content": "View all live offers",
+                  "fontFamily": "IBM Plex Sans",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "jSauL",
+      "x": 1520,
+      "y": 1080,
+      "name": "Concept 5 - Glass Command Center",
+      "width": 1440,
+      "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 180,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "#07131F",
+            "position": 0
+          },
+          {
+            "color": "#0E1F3B",
+            "position": 0.52
+          },
+          {
+            "color": "#08111F",
+            "position": 1
+          }
+        ]
+      },
+      "layout": "vertical",
+      "gap": 28,
+      "padding": [
+        28,
+        28,
+        40,
+        28
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "0XfhK",
+          "name": "top2",
+          "width": "fill_container",
+          "fill": "#FFFFFF10",
+          "cornerRadius": 20,
+          "stroke": {
+            "thickness": 1,
+            "fill": "#8FC8FF22"
+          },
+          "effect": {
+            "type": "background_blur",
+            "radius": 16
+          },
+          "padding": [
+            10,
+            14
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "KPTfg",
+              "name": "brand2",
+              "fill": "#EAF4FF",
+              "content": "DISCOUNTHUB // LIVE",
+              "fontFamily": "DM Mono",
+              "fontSize": 16,
+              "fontWeight": "500",
+              "letterSpacing": 2.4
+            },
+            {
+              "type": "frame",
+              "id": "ppWHO",
+              "name": "nav2",
+              "gap": 14,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Dxcws",
+                  "name": "nav2a",
+                  "fill": "#AFC8E4",
+                  "content": "Signals",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "lnP5s",
+                  "name": "nav2b",
+                  "fill": "#AFC8E4",
+                  "content": "Saved",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "MsLHo",
+                  "name": "nav2c",
+                  "fill": {
+                    "type": "gradient",
+                    "gradientType": "linear",
+                    "enabled": true,
+                    "rotation": 90,
+                    "size": {
+                      "height": 1
+                    },
+                    "colors": [
+                      {
+                        "color": "#FF5C00",
+                        "position": 0
+                      },
+                      {
+                        "color": "#FF8A4C",
+                        "position": 1
+                      }
+                    ]
+                  },
+                  "cornerRadius": 999,
+                  "padding": [
+                    10,
+                    16
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "cvkYj",
+                      "fill": "#FFFFFF",
+                      "content": "Enter Command",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "gwKW3",
+          "name": "hero2",
+          "width": "fill_container",
+          "gap": 20,
+          "children": [
+            {
+              "type": "frame",
+              "id": "LHTBW",
+              "name": "left2",
+              "width": "fill_container",
+              "fill": "#FFFFFF08",
+              "cornerRadius": 28,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#8FC8FF1C"
+              },
+              "effect": {
+                "type": "background_blur",
+                "radius": 18
+              },
+              "layout": "vertical",
+              "gap": 18,
+              "padding": [
+                30,
+                28
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "wd0C9",
+                  "fill": "#7DD3FC",
+                  "content": "REAL-TIME DEAL INTELLIGENCE",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "5ULKA",
+                  "fill": "#FFFFFF",
+                  "textGrowth": "fixed-width",
+                  "width": 760,
+                  "content": "See the discount market like a command feed.",
+                  "lineHeight": 0.92,
+                  "fontFamily": "Instrument Serif",
+                  "fontSize": 72
+                },
+                {
+                  "type": "text",
+                  "id": "9SYAq",
+                  "fill": "#B9C8DA",
+                  "textGrowth": "fixed-width",
+                  "width": 620,
+                  "content": "Layered glass surfaces, urgent signals, and a faster entry into the offers worth opening right now.",
+                  "lineHeight": 1.45,
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "9CwV7",
+                  "name": "ctaRow2",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "eBxxm",
+                      "name": "cta21",
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "linear",
+                        "enabled": true,
+                        "rotation": 90,
+                        "size": {
+                          "height": 1
+                        },
+                        "colors": [
+                          {
+                            "color": "#FF5C00",
+                            "position": 0
+                          },
+                          {
+                            "color": "#FF8A4C",
+                            "position": 1
+                          }
+                        ]
+                      },
+                      "cornerRadius": 999,
+                      "padding": [
+                        12,
+                        18
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "R7F0b",
+                          "fill": "#FFFFFF",
+                          "content": "Launch Search",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "OpXtq",
+                      "name": "cta22",
+                      "fill": "#FFFFFF12",
+                      "cornerRadius": 999,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "#9AD7FF24"
+                      },
+                      "padding": [
+                        12,
+                        18
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "a2AYN",
+                          "fill": "#EAF4FF",
+                          "content": "See active zones",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "43nKU",
+              "name": "right2",
+              "width": 430,
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "DjW3o",
+                  "name": "panel21",
+                  "width": "fill_container",
+                  "fill": "#FFFFFF10",
+                  "cornerRadius": 26,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#8FC8FF22"
+                  },
+                  "effect": {
+                    "type": "background_blur",
+                    "radius": 18
+                  },
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 22,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "VeY0c",
+                      "fill": "#FFFFFF",
+                      "content": "Most volatile sectors",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "2DVVQ",
+                      "fill": "#FFD1B5",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Travel / beauty / grocery / cashback",
+                      "lineHeight": 1.18,
+                      "fontFamily": "DM Mono",
+                      "fontSize": 24,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "WKunY",
+                  "name": "panel22",
+                  "width": "fill_container",
+                  "fill": "#101B2DCC",
+                  "cornerRadius": 26,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#FF5C0030"
+                  },
+                  "layout": "vertical",
+                  "gap": 10,
+                  "padding": 22,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "4qABz",
+                      "fill": "#FF8A4C",
+                      "content": "Pulse",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "letterSpacing": 1.6
+                    },
+                    {
+                      "type": "text",
+                      "id": "2MpCc",
+                      "fill": "#FFFFFF",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "+17 new offers in the last hour",
+                      "lineHeight": 1.04,
+                      "fontFamily": "DM Mono",
+                      "fontSize": 34,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "3cvC0",
+          "name": "bento2",
+          "width": "fill_container",
+          "gap": 16,
+          "children": [
+            {
+              "type": "frame",
+              "id": "cVgeU",
+              "name": "card21",
+              "width": "fill_container",
+              "fill": "#FFFFFF10",
+              "cornerRadius": 24,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#8FC8FF22"
+              },
+              "effect": {
+                "type": "background_blur",
+                "radius": 16
+              },
+              "layout": "vertical",
+              "gap": 10,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "grOi7",
+                  "fill": "#FFFFFF",
+                  "content": "Top search intents",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "yV8io",
+                  "fill": "#BFE4FF",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "coupon code\ncredit card day\nweekend escape",
+                  "lineHeight": 1.18,
+                  "fontFamily": "DM Mono",
+                  "fontSize": 22,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ilC0z",
+              "name": "card22",
+              "width": "fill_container",
+              "fill": "#141417",
+              "cornerRadius": 24,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#FF5C0030"
+              },
+              "layout": "vertical",
+              "gap": 10,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "b9b8D",
+                  "fill": "#FFFFFF",
+                  "content": "Featured card stack",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "PEuSP",
+                  "fill": "#FFD1B5",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Airport lounge + dining + travel insurance",
+                  "lineHeight": 0.98,
+                  "fontFamily": "Instrument Serif",
+                  "fontSize": 34
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "uHv6K",
+              "name": "card23",
+              "width": "fill_container",
+              "fill": "#FFFFFF10",
+              "cornerRadius": 24,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#8FC8FF22"
+              },
+              "effect": {
+                "type": "background_blur",
+                "radius": 16
+              },
+              "layout": "vertical",
+              "gap": 10,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "rchVn",
+                  "fill": "#FFFFFF",
+                  "content": "Urgency",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "WYeyl",
+                  "fill": "#FFFFFF",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "68 expiring by midnight",
+                  "lineHeight": 1.05,
+                  "fontFamily": "DM Mono",
+                  "fontSize": 32,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "9WFJW",
+          "name": "strip2",
+          "width": "fill_container",
+          "gap": 16,
+          "children": [
+            {
+              "type": "frame",
+              "id": "2GOrW",
+              "name": "mini21",
+              "width": "fill_container",
+              "fill": "#FF5C0014",
+              "cornerRadius": 18,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#FF5C0030"
+              },
+              "gap": 10,
+              "padding": 16,
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "m2FsP",
+                  "width": 18,
+                  "height": 18,
+                  "iconFontName": "sparkles",
+                  "iconFontFamily": "lucide",
+                  "fill": "#FF8A4C"
+                },
+                {
+                  "type": "text",
+                  "id": "zk07o",
+                  "fill": "#FFFFFF",
+                  "content": "Search bar is the product.",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "53E0x",
+              "name": "mini22",
+              "width": "fill_container",
+              "fill": "#0E223A",
+              "cornerRadius": 18,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#8FC8FF22"
+              },
+              "gap": 10,
+              "padding": 16,
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "ShFyM",
+                  "width": 18,
+                  "height": 18,
+                  "iconFontName": "radar",
+                  "iconFontFamily": "lucide",
+                  "fill": "#7DD3FC"
+                },
+                {
+                  "type": "text",
+                  "id": "z20ML",
+                  "fill": "#FFFFFF",
+                  "content": "Cards float above a moving market grid.",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "AwW8X",
+          "name": "final2",
+          "width": "fill_container",
+          "fill": "#FFFFFF10",
+          "cornerRadius": 24,
+          "stroke": {
+            "thickness": 1,
+            "fill": "#8FC8FF22"
+          },
+          "effect": {
+            "type": "background_blur",
+            "radius": 18
+          },
+          "padding": [
+            22,
+            24
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "7usvn",
+              "fill": "#FFFFFF",
+              "content": "A glassy command center for discount hunters.",
+              "fontFamily": "Instrument Serif",
+              "fontSize": 34
+            },
+            {
+              "type": "frame",
+              "id": "8SDnr",
+              "name": "btn2",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 90,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#FF5C00",
+                    "position": 0
+                  },
+                  {
+                    "color": "#FF8A4C",
+                    "position": 1
+                  }
+                ]
+              },
+              "cornerRadius": 999,
+              "padding": [
+                12,
+                18
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "CN6IY",
+                  "fill": "#FFFFFF",
+                  "content": "Open live feed",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "vxZu1",
+      "x": 3040,
+      "y": 1080,
+      "name": "Concept 6 - Warm Data Room",
+      "width": 1440,
+      "fill": "#F4EFE6",
+      "layout": "vertical",
+      "gap": 28,
+      "padding": [
+        28,
+        28,
+        40,
+        28
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "2rec1",
+          "name": "top3",
+          "width": "fill_container",
+          "fill": "#EEE6D9",
+          "stroke": {
+            "thickness": 1,
+            "fill": "#D6CCBE"
+          },
+          "padding": [
+            12,
+            16
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "EcnZ7",
+              "name": "brand3",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "KSeQj",
+                  "name": "mark3",
+                  "width": 18,
+                  "height": 18,
+                  "fill": "#C05A3C"
+                },
+                {
+                  "type": "text",
+                  "id": "VE1M1",
+                  "fill": "#1A1A1A",
+                  "content": "DISCOUNTHUB MARKET DESK",
+                  "fontFamily": "Space Grotesk",
+                  "fontSize": 18,
+                  "fontWeight": "700",
+                  "letterSpacing": 1.4
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "E2grQ",
+              "name": "nav3",
+              "gap": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Ot9VQ",
+                  "fill": "#555555",
+                  "content": "Today's Board",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "Jlm1u",
+                  "fill": "#555555",
+                  "content": "Top Stores",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "TRG8h",
+                  "name": "navBtn3",
+                  "fill": "#1A1A1A",
+                  "padding": [
+                    10,
+                    16
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Fx4Cg",
+                      "fill": "#F5F3EF",
+                      "content": "Search Offers",
+                      "fontFamily": "Space Grotesk",
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "letterSpacing": 1
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "9yFjA",
+          "name": "hero3",
+          "width": "fill_container",
+          "gap": 18,
+          "children": [
+            {
+              "type": "frame",
+              "id": "J0Jrs",
+              "name": "left3",
+              "width": "fill_container",
+              "fill": "#E8E4DC",
+              "layout": "vertical",
+              "gap": 18,
+              "padding": 30,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ESLmN",
+                  "fill": "#C05A3C",
+                  "content": "CALM SIGNALS / DAILY SAVINGS",
+                  "fontFamily": "Space Grotesk",
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "Crk5o",
+                  "fill": "#1A1A1A",
+                  "textGrowth": "fixed-width",
+                  "width": 760,
+                  "content": "A warmer homepage for people who want savings without chaos.",
+                  "lineHeight": 0.95,
+                  "fontFamily": "Space Grotesk",
+                  "fontSize": 66,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "yjGTD",
+                  "fill": "#555555",
+                  "textGrowth": "fixed-width",
+                  "width": 650,
+                  "content": "Cream surfaces, grounded type, and a more human front page for browsing store offers, card days, and practical household deals.",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "oYBnm",
+                  "name": "search3",
+                  "width": 700,
+                  "fill": "#F5F3EF",
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#D6CCBE"
+                  },
+                  "padding": [
+                    14,
+                    16
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Wipfa",
+                      "name": "searchWrap3",
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "SEq5p",
+                          "width": 18,
+                          "height": 18,
+                          "iconFontName": "search",
+                          "iconFontFamily": "lucide",
+                          "fill": "#555555"
+                        },
+                        {
+                          "type": "text",
+                          "id": "HmBld",
+                          "fill": "#555555",
+                          "content": "Search by store, card, keyword, mall",
+                          "fontFamily": "Inter",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "AIN1B",
+                      "name": "searchBtn3",
+                      "fill": "#C05A3C",
+                      "padding": [
+                        10,
+                        16
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ENvI3",
+                          "fill": "#F5F3EF",
+                          "content": "Open Board",
+                          "fontFamily": "Space Grotesk",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "letterSpacing": 1
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ylLfx",
+              "name": "right3",
+              "width": 410,
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "rN5X4",
+                  "name": "panel31",
+                  "width": "fill_container",
+                  "fill": "#1A1A1A",
+                  "layout": "vertical",
+                  "gap": 10,
+                  "padding": 22,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "tbqEk",
+                      "fill": "#F5F3EF",
+                      "content": "Most trusted lanes",
+                      "fontFamily": "Space Grotesk",
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "letterSpacing": 1.4
+                    },
+                    {
+                      "type": "text",
+                      "id": "YEDna",
+                      "fill": "#F5F3EF",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Groceries\nFamily dining\nMobile plans",
+                      "lineHeight": 1.08,
+                      "fontFamily": "Space Grotesk",
+                      "fontSize": 30,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "DfQVf",
+                  "name": "panel32",
+                  "width": "fill_container",
+                  "fill": "#EEE6D9",
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#D6CCBE"
+                  },
+                  "layout": "vertical",
+                  "gap": 10,
+                  "padding": 22,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "6izph",
+                      "fill": "#555555",
+                      "content": "Average shelf life",
+                      "fontFamily": "Space Grotesk",
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "letterSpacing": 1.4
+                    },
+                    {
+                      "type": "text",
+                      "id": "PZ6TS",
+                      "fill": "#1A1A1A",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "fresh for 3h 08m",
+                      "lineHeight": 1.02,
+                      "fontFamily": "Space Grotesk",
+                      "fontSize": 34,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "cZku8",
+          "name": "row3",
+          "width": "fill_container",
+          "gap": 16,
+          "children": [
+            {
+              "type": "frame",
+              "id": "bHFNH",
+              "name": "card31",
+              "width": "fill_container",
+              "fill": "#EEE6D9",
+              "stroke": {
+                "thickness": 1,
+                "fill": "#D6CCBE"
+              },
+              "layout": "vertical",
+              "gap": 8,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "dGH2I",
+                  "fill": "#555555",
+                  "content": "Household wins",
+                  "fontFamily": "Space Grotesk",
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                  "letterSpacing": 1.2
+                },
+                {
+                  "type": "text",
+                  "id": "kBWnU",
+                  "fill": "#1A1A1A",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Laundry + pantry + pharmacy in one pass",
+                  "lineHeight": 1.05,
+                  "fontFamily": "Space Grotesk",
+                  "fontSize": 30,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "YEqQM",
+              "name": "card32",
+              "width": "fill_container",
+              "fill": "#1A1A1A",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "gchRo",
+                  "fill": "#F5F3EF",
+                  "content": "Featured store",
+                  "fontFamily": "Space Grotesk",
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                  "letterSpacing": 1.2
+                },
+                {
+                  "type": "text",
+                  "id": "K10lE",
+                  "fill": "#F5F3EF",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "ParknShop dinner bundle + bank day rebate",
+                  "lineHeight": 1.05,
+                  "fontFamily": "Space Grotesk",
+                  "fontSize": 30,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "nxFwP",
+              "name": "card33",
+              "width": "fill_container",
+              "fill": "#C05A3C",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "GsN2e",
+                  "fill": "#F5F3EF",
+                  "content": "Mood",
+                  "fontFamily": "Space Grotesk",
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                  "letterSpacing": 1.2
+                },
+                {
+                  "type": "text",
+                  "id": "N4jdY",
+                  "fill": "#F5F3EF",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Practical, warm, and less like a trading screen.",
+                  "lineHeight": 1.3,
+                  "fontFamily": "Inter",
+                  "fontSize": 20,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "WcBMI",
+          "name": "final3",
+          "width": "fill_container",
+          "fill": "#E8E4DC",
+          "stroke": {
+            "thickness": 1,
+            "fill": "#D6CCBE"
+          },
+          "padding": [
+            22,
+            24
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "siHdZ",
+              "fill": "#1A1A1A",
+              "content": "Designed as a calmer front page for everyday deal decisions.",
+              "fontFamily": "Space Grotesk",
+              "fontSize": 28,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "NWBQw",
+              "name": "btn3",
+              "fill": "#1A1A1A",
+              "padding": [
+                12,
+                18
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Zdod9",
+                  "fill": "#F5F3EF",
+                  "content": "Browse live board",
+                  "fontFamily": "Space Grotesk",
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                  "letterSpacing": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }
