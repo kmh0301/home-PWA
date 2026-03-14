@@ -7,6 +7,7 @@ import {
   DEFAULT_AUTHENTICATED_ENTRY_PATH,
   getSafeRedirectTarget,
 } from "@/lib/auth/session";
+import { logAuthDebug } from "@/lib/auth/debug";
 import { env } from "@/lib/env";
 import { getSupabaseServerActionClient } from "@/lib/supabase/server-action";
 
@@ -32,10 +33,18 @@ export async function signInAction(formData: FormData) {
     DEFAULT_AUTHENTICATED_ENTRY_PATH,
   );
   const supabase = await getSupabaseServerActionClient();
+  logAuthDebug("sign_in.start", {
+    next,
+  });
 
   const { error } = await supabase.auth.signInWithPassword({
     email,
     password,
+  });
+
+  logAuthDebug("sign_in.result", {
+    next,
+    error: error?.message ?? null,
   });
 
   if (error) {
@@ -69,6 +78,9 @@ export async function signUpAction(formData: FormData) {
 
   const supabase = await getSupabaseServerActionClient();
   const origin = await getOrigin();
+  logAuthDebug("sign_up.start", {
+    next,
+  });
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
@@ -81,10 +93,20 @@ export async function signUpAction(formData: FormData) {
   });
 
   if (error) {
+    logAuthDebug("sign_up.result", {
+      next,
+      error: error.message,
+    });
     redirect(
       `/login?mode=register&error=${encodeMessage(error.message)}&next=${encodeURIComponent(next)}`,
     );
   }
+
+  logAuthDebug("sign_up.result", {
+    next,
+    hasUser: Boolean(data.user),
+    error: null,
+  });
 
   if (data.session) {
     redirect(next);
@@ -118,6 +140,9 @@ export async function signInWithOAuthAction(formData: FormData) {
   );
   const supabase = await getSupabaseServerActionClient();
   const origin = await getOrigin();
+  logAuthDebug("oauth.start", {
+    next,
+  });
 
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider,
@@ -127,8 +152,16 @@ export async function signInWithOAuthAction(formData: FormData) {
   });
 
   if (error || !data.url) {
+    logAuthDebug("oauth.result", {
+      next,
+      error: error?.message ?? "OAuth start failed",
+    });
     redirect(`/login?error=${encodeMessage(error?.message ?? "OAuth start failed")}`);
   }
 
+  logAuthDebug("oauth.result", {
+    next,
+    error: null,
+  });
   redirect(data.url);
 }

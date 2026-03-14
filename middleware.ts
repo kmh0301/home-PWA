@@ -7,6 +7,7 @@ import {
   isProtectedAppPath,
   isPublicAuthPath,
 } from "@/lib/auth/session";
+import { logAuthDebug } from "@/lib/auth/debug";
 import { isSupabaseConfigured } from "@/lib/env";
 import { updateSession } from "@/lib/supabase/middleware";
 
@@ -29,6 +30,12 @@ export async function middleware(request: NextRequest) {
     pathname === "/auth/callback" && request.nextUrl.searchParams.has("code");
 
   if (!user && isProtected) {
+    logAuthDebug("middleware.redirect_to_login", {
+      pathname,
+      requestCookies: request.cookies.getAll(),
+      hasUser: false,
+      next: `${pathname}${search}`,
+    });
     return NextResponse.redirect(new URL(buildLoginRedirectPath(`${pathname}${search}`), request.url));
   }
 
@@ -37,9 +44,20 @@ export async function middleware(request: NextRequest) {
       request.nextUrl.searchParams.get("next"),
       DEFAULT_AUTHENTICATED_ENTRY_PATH,
     );
+    logAuthDebug("middleware.redirect_authenticated_user", {
+      pathname,
+      requestCookies: request.cookies.getAll(),
+      hasUser: true,
+      next,
+    });
     return NextResponse.redirect(new URL(next, request.url));
   }
 
+  logAuthDebug("middleware.allow", {
+    pathname,
+    requestCookies: request.cookies.getAll(),
+    hasUser: Boolean(user),
+  });
   response.headers.set("x-pathname", pathname);
   response.headers.set("x-search", search);
   return response;
