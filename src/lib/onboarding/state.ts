@@ -7,6 +7,23 @@ import type { Database } from "@/types/database.types";
 
 type PaymentAccount = Pick<Database["public"]["Tables"]["payment_accounts"]["Row"], "id">;
 
+export type OnboardingRoute =
+  | "/login"
+  | "/onboarding/create"
+  | "/onboarding/join"
+  | "/onboarding/join/success"
+  | "/onboarding/accounts"
+  | "/dashboard";
+
+type OnboardingRouteOptions = {
+  joined?: boolean;
+};
+
+type OnboardingRouteAccess = {
+  allowedRoutes: OnboardingRoute[];
+  defaultRoute: OnboardingRoute;
+};
+
 export type OnboardingState = {
   user: Awaited<ReturnType<typeof getCurrentHousehold>>["user"];
   householdMembership: CurrentHouseholdMembership | null;
@@ -52,18 +69,52 @@ export async function getOnboardingState(): Promise<OnboardingState> {
   };
 }
 
-export function getNextOnboardingRoute(state: OnboardingState) {
+export function getAllowedOnboardingRoutes(
+  state: OnboardingState,
+  options: OnboardingRouteOptions = {},
+): OnboardingRouteAccess {
   if (!state.user) {
-    return "/login";
+    return {
+      allowedRoutes: ["/login"],
+      defaultRoute: "/login",
+    };
   }
 
   if (!state.householdMembership) {
-    return "/onboarding/create";
+    return {
+      allowedRoutes: ["/onboarding/create", "/onboarding/join"],
+      defaultRoute: "/onboarding/create",
+    };
   }
 
   if (!state.hasCompletedAccountSetup) {
-    return "/onboarding/accounts";
+    return {
+      allowedRoutes: options.joined
+        ? ["/onboarding/join/success", "/onboarding/accounts"]
+        : ["/onboarding/accounts"],
+      defaultRoute: "/onboarding/accounts",
+    };
   }
 
-  return "/dashboard";
+  return {
+    allowedRoutes: ["/dashboard"],
+    defaultRoute: "/dashboard",
+  };
+}
+
+export function getNextOnboardingRoute(
+  state: OnboardingState,
+  options: OnboardingRouteOptions = {},
+) {
+  return getAllowedOnboardingRoutes(state, options).defaultRoute;
+}
+
+export function isAllowedOnboardingRoute(
+  state: OnboardingState,
+  route: OnboardingRoute,
+  options: OnboardingRouteOptions = {},
+) {
+  const { allowedRoutes } = getAllowedOnboardingRoutes(state, options);
+
+  return allowedRoutes.includes(route);
 }
