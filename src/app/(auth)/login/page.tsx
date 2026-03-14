@@ -18,6 +18,13 @@ import {
 } from "@/app/(auth)/login/actions";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
+import {
+  Field,
+  FieldContent,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
@@ -89,6 +96,7 @@ function FieldLine({
   spellCheck,
   placeholder,
   required = true,
+  description,
 }: {
   id: string;
   label: string;
@@ -99,27 +107,35 @@ function FieldLine({
   spellCheck?: boolean;
   placeholder: string;
   required?: boolean;
+  description?: string;
 }) {
   return (
-    <div className="flex w-full flex-col gap-2 border-b border-[#d9c6b8] pb-[14px]">
-      <label
-        htmlFor={id}
-        className={`${sansClassName()} text-xs font-semibold tracking-[0.08em] text-[#a08370]`}
-      >
-        {label}
-      </label>
-      <Input
-        id={id}
-        name={name}
-        type={type}
-        autoComplete={autoComplete}
-        autoCapitalize={autoCapitalize}
-        spellCheck={spellCheck}
-        placeholder={placeholder}
-        required={required}
-        className={`${serifClassName()} h-auto rounded-none border-0 bg-transparent px-0 py-0 text-[1.375rem] leading-none text-[#5a3728] shadow-none placeholder:text-[#5a3728] focus-visible:ring-0 focus-visible:ring-offset-0 md:text-[1.375rem]`}
-      />
-    </div>
+    <Field className="gap-0">
+      <FieldContent className="gap-2 border-b border-input pb-[14px]">
+        <FieldLabel
+          htmlFor={id}
+          className={`${sansClassName()} text-xs font-semibold tracking-[0.08em] text-muted-foreground`}
+        >
+          {label}
+        </FieldLabel>
+        <Input
+          id={id}
+          name={name}
+          type={type}
+          autoComplete={autoComplete}
+          autoCapitalize={autoCapitalize}
+          spellCheck={spellCheck}
+          placeholder={placeholder}
+          required={required}
+          className={`${serifClassName()} h-auto border-0 bg-transparent px-0 py-0 text-[1.375rem] leading-none text-foreground shadow-none placeholder:text-foreground focus-visible:ring-0 focus-visible:ring-offset-0 md:text-[1.375rem]`}
+        />
+        {description ? (
+          <FieldDescription className="text-xs leading-5 text-muted-foreground">
+            {description}
+          </FieldDescription>
+        ) : null}
+      </FieldContent>
+    </Field>
   );
 }
 
@@ -143,19 +159,19 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 
   return (
     <main
-      className={`${sansClassName()} min-h-screen bg-[#fff7f1] text-[#5a3728]`}
+      className={`${sansClassName()} min-h-screen bg-background text-foreground`}
     >
       <section className="mx-auto flex min-h-screen w-full max-w-[1440px] flex-col gap-6 px-6 py-5 lg:grid lg:min-h-[960px] lg:grid-cols-[760px_540px] lg:gap-0 lg:px-0 lg:py-0">
-        <div className="flex flex-col gap-3 lg:bg-[#f7ecdf] lg:px-24 lg:py-24">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#9a7b66] lg:text-[12px] lg:tracking-[0.12em]">
+        <div className="flex flex-col gap-3 lg:bg-muted lg:px-24 lg:py-24">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground lg:text-[12px] lg:tracking-[0.12em]">
             今晚上線 / 家庭總覽入口
           </p>
           <h1
-            className={`${serifClassName()} max-w-full text-[2.125rem] leading-none tracking-tight text-[#5a3728] lg:max-w-[600px] lg:text-[68px] lg:leading-[0.98]`}
+            className={`${serifClassName()} max-w-full text-[2.125rem] leading-none tracking-tight text-foreground lg:max-w-[600px] lg:text-[68px] lg:leading-[0.98]`}
           >
             {heroTitle}
           </h1>
-          <p className="max-w-full text-sm leading-6 text-[#8a6b57] lg:max-w-[560px] lg:text-[17px] lg:leading-[1.6]">
+          <p className="hidden max-w-full text-sm leading-6 text-muted-foreground lg:block lg:max-w-[560px] lg:text-[17px] lg:leading-[1.6]">
             {heroCopy}
           </p>
 
@@ -164,17 +180,17 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
               {familySummary.map(({ icon: Icon, label, text }) => (
                 <div
                   key={label}
-                  className="flex w-full items-center gap-[14px] border-b border-[#e8d8c9] py-[14px]"
+                  className="flex w-full items-center gap-[14px] border-b border-border py-[14px]"
                 >
                   <Icon
-                    className="size-4 shrink-0 text-[#c9735a]"
+                    className="size-4 shrink-0 text-primary"
                     aria-hidden={true}
                   />
                   <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#b15f48]">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-primary">
                       {label}
                     </span>
-                    <span className="text-[15px] font-semibold text-[#5a3728]">
+                    <span className="text-[15px] font-semibold text-foreground">
                       {text}
                     </span>
                   </div>
@@ -185,18 +201,18 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
         </div>
 
         <div className="flex flex-col gap-[14px] pb-7 lg:px-[52px] lg:pt-[84px] lg:pr-16 lg:pb-[84px]">
-          <div className="hidden h-[72px] w-px bg-[#d9c6b8] lg:block" />
+          <div className="hidden h-[72px] w-px bg-input lg:block" />
 
           <div className="flex flex-col gap-[14px]">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#a08370]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
               FAMILY ACCESS
             </p>
             <h2
-              className={`${serifClassName()} text-[2.125rem] leading-none text-[#5a3728] lg:text-[46px]`}
+              className={`${serifClassName()} text-[2.125rem] leading-none text-foreground lg:text-[46px]`}
             >
               {formTitle}
             </h2>
-            <p className="max-w-full text-sm leading-6 text-[#8a6b57] lg:max-w-[420px] lg:text-base">
+            <p className="max-w-full text-sm leading-6 text-muted-foreground lg:max-w-[420px] lg:text-base">
               {formCopy}
             </p>
           </div>
@@ -205,10 +221,10 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
             <Alert
               aria-live="polite"
               className={cn(
-                "rounded-none border-x-0 border-b-0 border-t bg-transparent px-0 py-4",
+                "rounded-none border-x-0 border-b-0 border-t bg-transparent px-0 py-4 shadow-none",
                 statusTone === "error"
                   ? "border-destructive/30 text-destructive"
-                  : "border-[color:var(--positive)]/30 text-[color:var(--positive)]",
+                  : "border-secondary/30 text-secondary",
               )}
             >
               <AlertTitle className="text-sm font-semibold">
@@ -220,73 +236,76 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 
           <form
             action={isRegister ? signUpAction : signInAction}
-            className="flex w-full flex-col gap-[18px] lg:max-w-[460px]"
+            className="w-full lg:max-w-[460px]"
           >
             <input name="next" type="hidden" value={next} />
+            <FieldGroup className="gap-[18px]">
+              {isRegister ? (
+                <FieldLine
+                  id="displayName"
+                  name="displayName"
+                  label="顯示名稱"
+                  autoComplete="nickname"
+                  autoCapitalize="words"
+                  placeholder="例如：阿晴"
+                  description="這個名稱會顯示在家庭邀請和共享紀錄中。"
+                />
+              ) : null}
 
-            {isRegister ? (
               <FieldLine
-                id="displayName"
-                name="displayName"
-                label="顯示名稱"
-                autoComplete="nickname"
-                autoCapitalize="words"
-                placeholder="例如：阿晴"
+                id="email"
+                name="email"
+                label="電郵地址"
+                type="email"
+                autoComplete="email"
+                autoCapitalize="none"
+                spellCheck={false}
+                placeholder="name@example.com"
               />
-            ) : null}
 
-            <FieldLine
-              id="email"
-              name="email"
-              label="電郵地址"
-              type="email"
-              autoComplete="email"
-              autoCapitalize="none"
-              spellCheck={false}
-              placeholder="name@example.com"
-            />
-
-            <FieldLine
-              id="password"
-              name="password"
-              label="密碼"
-              type="password"
-              autoComplete={isRegister ? "new-password" : "current-password"}
-              placeholder="••••••••"
-            />
-
-            {isRegister ? (
               <FieldLine
-                id="passwordConfirm"
-                name="passwordConfirm"
-                label="確認密碼"
+                id="password"
+                name="password"
+                label="密碼"
                 type="password"
-                autoComplete="new-password"
+                autoComplete={isRegister ? "new-password" : "current-password"}
                 placeholder="••••••••"
               />
-            ) : null}
 
-            <div className="flex flex-col gap-[14px] pt-1">
-              <Button
-                type="submit"
-                className="h-auto w-full rounded-none bg-[#c9735a] px-[18px] py-[15px] text-[13px] font-semibold text-[#fff8f2] hover:bg-[#bf6b53]"
-              >
-                {isRegister ? "建立帳戶並開始協作" : "登入並查看今晚安排"}
-                <ArrowRight data-icon="inline-end" />
-              </Button>
+              {isRegister ? (
+                <FieldLine
+                  id="passwordConfirm"
+                  name="passwordConfirm"
+                  label="確認密碼"
+                  type="password"
+                  autoComplete="new-password"
+                  placeholder="••••••••"
+                />
+              ) : null}
 
-              <Link
-                href={isRegister ? `/login?next=${encodeURIComponent(next)}` : "/onboarding/join"}
-                className="text-[13px] font-semibold text-[#b15f48] transition-colors hover:text-[#9c543b]"
-              >
-                {isRegister ? "已有帳戶，返回登入" : "改用邀請連結進入"}
-              </Link>
-            </div>
+              <div className="flex flex-col gap-[14px] pt-1">
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="h-auto w-full px-[18px] py-[15px] text-[13px] font-semibold"
+                >
+                  {isRegister ? "建立帳戶並開始協作" : "登入並查看今晚安排"}
+                  <ArrowRight data-icon="inline-end" />
+                </Button>
+
+                <Link
+                  href={isRegister ? `/login?next=${encodeURIComponent(next)}` : "/onboarding/join"}
+                  className="text-[13px] font-semibold text-primary transition-colors hover:text-primary/80"
+                >
+                  {isRegister ? "已有帳戶，返回登入" : "改用邀請連結進入"}
+                </Link>
+              </div>
+            </FieldGroup>
           </form>
 
           <div className="flex w-full items-start gap-[10px] lg:max-w-[460px]">
-            <Shield className="mt-0.5 size-4 shrink-0 text-[#c9735a]" aria-hidden="true" />
-            <p className="max-w-full text-xs leading-5 text-[#8a6b57] lg:max-w-[430px]">
+            <Shield className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
+            <p className="max-w-full text-xs leading-5 text-muted-foreground lg:max-w-[430px]">
               登入後會恢復最近一次家庭進度、任務同支出脈絡。
             </p>
           </div>
