@@ -204,7 +204,7 @@ export async function createHouseholdAction(formData: FormData) {
 }
 
 export async function validateInviteAction(formData: FormData) {
-  await requireAuthedOnboardingState();
+  const onboardingState = await requireAuthedOnboardingState();
   const inviteCode = String(formData.get("inviteCode") ?? "")
     .trim()
     .toUpperCase();
@@ -237,7 +237,11 @@ export async function validateInviteAction(formData: FormData) {
       preview.household_name,
     )}&expiresAt=${encodeURIComponent(preview.expires_at)}&creatorDisplayName=${encodeMessage(
       preview.creator_display_name,
-    )}&memberCount=${preview.member_count}&valid=1`,
+    )}&memberCount=${preview.member_count}&displayName=${encodeMessage(
+      String(onboardingState.user.user_metadata?.display_name ?? "").trim() ||
+        onboardingState.user.email?.split("@")[0] ||
+        "Member",
+    )}&valid=1`,
   );
 }
 
@@ -246,11 +250,15 @@ export async function claimInviteAction(formData: FormData) {
   const inviteCode = String(formData.get("inviteCode") ?? "")
     .trim()
     .toUpperCase();
-  const displayName =
-    String(formData.get("displayName") ?? "").trim() ||
+  const fallbackDisplayName =
     String(onboardingState.user.user_metadata?.display_name ?? "").trim() ||
     onboardingState.user.email?.split("@")[0] ||
     "Member";
+  const displayName = String(formData.get("displayName") ?? "").trim() || fallbackDisplayName;
+  const householdName = String(formData.get("householdName") ?? "").trim();
+  const expiresAt = String(formData.get("expiresAt") ?? "").trim();
+  const creatorDisplayName = String(formData.get("creatorDisplayName") ?? "").trim();
+  const memberCount = String(formData.get("memberCount") ?? "").trim();
 
   const supabase = await getSupabaseServerClient();
   const { data, error } = await supabase.rpc("claim_invite", {
@@ -264,7 +272,13 @@ export async function claimInviteAction(formData: FormData) {
     redirect(
       `/onboarding/join?error=${encodeMessage(
         getClaimInviteErrorMessage(result?.status),
-      )}&inviteCode=${inviteCode}`,
+      )}&inviteCode=${inviteCode}&householdName=${encodeMessage(
+        householdName,
+      )}&expiresAt=${encodeURIComponent(expiresAt)}&creatorDisplayName=${encodeMessage(
+        creatorDisplayName,
+      )}&memberCount=${encodeMessage(memberCount)}&displayName=${encodeMessage(
+        displayName,
+      )}&valid=1`,
     );
   }
 
