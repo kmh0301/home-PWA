@@ -2,7 +2,7 @@
   "name": "Home Collaboration PWA",
   "short_name": "HomePWA",
   "description": "Two-person household home management progressive web app.",
-  "start_url": "/dashboard",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#f4efe5",
   "theme_color": "#c84c2a",
