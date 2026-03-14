@@ -1,7 +1,5 @@
 "use server";
 
-import { randomBytes } from "node:crypto";
-
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
@@ -10,17 +8,17 @@ import { env } from "@/lib/env";
 import { requireCurrentHousehold } from "@/lib/household/current-household";
 import { getOnboardingState, type OnboardingState } from "@/lib/onboarding/state";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
+import type { Database } from "@/types/database.types";
 
 const DEFAULT_INVITE_EXPIRY_HOURS = 24;
 
 type PaymentAccountType = "alipay_hk" | "payme" | "cash" | "credit_card" | "custom";
 
-type InvitePreview = {
-  household_id: string;
-  household_name: string;
-  expires_at: string;
-  is_valid: boolean;
-};
+type CreateHouseholdResult = Database["public"]["Functions"]["create_household"]["Returns"][number];
+type InvitePreview = Database["public"]["Functions"]["validate_invite_code"]["Returns"][number];
+type ClaimInviteResult = Database["public"]["Functions"]["claim_invite"]["Returns"][number];
+type RegenerateInviteResult =
+  Database["public"]["Functions"]["regenerate_household_invite"]["Returns"][number];
 
 type AccountPresetInput = {
   key: string;
@@ -55,18 +53,86 @@ function parseCurrencyToCents(input: FormDataEntryValue | null) {
   return Math.round(normalized * 100);
 }
 
-function generateInviteCode() {
-  return randomBytes(4)
-    .toString("base64url")
-    .replace(/[^A-Z0-9]/gi, "")
-    .toUpperCase()
-    .slice(0, 6);
-}
-
 async function getAppOrigin() {
   const headerStore = await headers();
 
   return env.NEXT_PUBLIC_APP_URL || headerStore.get("origin") || "http://localhost:3000";
+}
+
+function getCreateHouseholdErrorMessage(status: CreateHouseholdResult["status"] | null | undefined) {
+  switch (status) {
+    case "invalid_household_name":
+      return "請先輸入家庭名稱。";
+    case "already_in_household":
+      return "你已經加入家庭，不能再次建立新家庭。";
+    case "invite_generation_failed":
+      return "暫時未能建立邀請碼，請稍後再試。";
+    case "not_authenticated":
+      return "請先登入，再建立家庭。";
+    case "invalid_invite_expiry":
+      return "邀請碼有效期設定無效，請稍後再試。";
+    default:
+      return "暫時未能建立家庭，請稍後再試。";
+  }
+}
+
+function getInvitePreviewErrorMessage(status: InvitePreview["status"] | null | undefined) {
+  switch (status) {
+    case "invalid_invite":
+      return "邀請碼無效，請檢查後再試。";
+    case "invite_expired":
+      return "邀請碼已過期，請向對方索取新的邀請碼。";
+    case "invite_used":
+      return "這個邀請碼已被使用，請向對方索取新的邀請碼。";
+    case "already_in_household":
+      return "你已經加入家庭，不能使用這個邀請碼。";
+    case "household_full":
+      return "這個家庭已滿兩位成員，暫時不能加入。";
+    default:
+      return "暫時未能驗證邀請碼，請稍後再試。";
+  }
+}
+
+function getClaimInviteErrorMessage(status: ClaimInviteResult["status"] | null | undefined) {
+  switch (status) {
+    case "invalid_display_name":
+      return "請輸入你想顯示給夥伴看的名稱。";
+    case "invalid_invite":
+      return "邀請碼無效，請重新輸入。";
+    case "invite_expired":
+      return "邀請碼已過期，請向對方索取新的邀請碼。";
+    case "invite_used":
+      return "這個邀請碼已被使用，請向對方索取新的邀請碼。";
+    case "already_in_household":
+      return "你已經加入家庭，不能再次加入。";
+    case "household_full":
+      return "這個家庭已滿兩位成員，暫時不能加入。";
+    case "not_authenticated":
+      return "請先登入，再加入家庭。";
+    default:
+      return "暫時未能加入家庭，請稍後再試。";
+  }
+}
+
+function getRegenerateInviteErrorMessage(
+  status: RegenerateInviteResult["status"] | null | undefined,
+) {
+  switch (status) {
+    case "not_owner":
+      return "只有建立家庭的一方可以重新產生邀請碼。";
+    case "household_full":
+      return "家庭已滿兩位成員，暫時不需要新的邀請碼。";
+    case "household_not_found":
+      return "找不到你的家庭資料，請重新整理後再試。";
+    case "invalid_invite_expiry":
+      return "邀請碼有效期設定無效，請稍後再試。";
+    case "invite_generation_failed":
+      return "暫時未能重新產生邀請碼，請稍後再試。";
+    case "not_authenticated":
+      return "請先登入，再重新產生邀請碼。";
+    default:
+      return "暫時未能重新產生邀請碼，請稍後再試。";
+  }
 }
 
 async function requireAuthedOnboardingState(): Promise<
@@ -99,7 +165,7 @@ export async function createHouseholdAction(formData: FormData) {
   const householdName = String(formData.get("householdName") ?? "").trim();
 
   if (!householdName) {
-    redirect("/onboarding/create?error=Household%20name%20is%20required");
+    redirect(`/onboarding/create?error=${encodeMessage("請先輸入家庭名稱。")}`);
   }
 
   const supabase = await getSupabaseServerClient();
@@ -108,52 +174,32 @@ export async function createHouseholdAction(formData: FormData) {
     onboardingState.user.email?.split("@")[0] ||
     "Member";
 
-  const { data: household, error: householdError } = await supabase
-    .from("households")
-    .insert({
-      name: householdName,
-    })
-    .select("id, name")
-    .single();
+  const { data, error } = await supabase.rpc("create_household", {
+    p_household_name: householdName,
+    p_display_name: displayName,
+    p_invite_expiry_hours: DEFAULT_INVITE_EXPIRY_HOURS,
+  });
 
-  if (householdError || !household) {
+  const result = (data?.[0] ?? null) as CreateHouseholdResult | null;
+
+  if (error || !result || result.status !== "success") {
     redirect(
       `/onboarding/create?error=${encodeMessage(
-        householdError?.message ?? "Failed to create household",
+        getCreateHouseholdErrorMessage(result?.status),
       )}`,
     );
   }
 
-  const { error: membershipError } = await supabase.from("household_members").insert({
-    household_id: household.id,
-    user_id: onboardingState.user.id,
-    display_name: displayName,
-  });
-
-  if (membershipError) {
-    redirect(`/onboarding/create?error=${encodeMessage(membershipError.message)}`);
-  }
-
-  const inviteCode = generateInviteCode();
-  const expiresAt = new Date(Date.now() + DEFAULT_INVITE_EXPIRY_HOURS * 60 * 60 * 1000);
-
-  const { error: inviteError } = await supabase.from("household_invites").insert({
-    household_id: household.id,
-    code: inviteCode,
-    created_by: onboardingState.user.id,
-    expires_at: expiresAt.toISOString(),
-  });
-
-  if (inviteError) {
-    redirect(`/onboarding/create?error=${encodeMessage(inviteError.message)}`);
+  if (!result.household_name || !result.invite_code || !result.expires_at) {
+    redirect(`/onboarding/create?error=${encodeMessage("暫時未能建立家庭，請稍後再試。")}`);
   }
 
   revalidatePath("/");
   revalidatePath("/onboarding/create");
   redirect(
     `/onboarding/create?success=1&householdName=${encodeMessage(
-      household.name,
-    )}&inviteCode=${inviteCode}&expiresAt=${encodeURIComponent(expiresAt.toISOString())}`,
+      result.household_name,
+    )}&inviteCode=${result.invite_code}&expiresAt=${encodeURIComponent(result.expires_at)}`,
   );
 }
 
@@ -164,7 +210,7 @@ export async function validateInviteAction(formData: FormData) {
     .toUpperCase();
 
   if (inviteCode.length !== 6) {
-    redirect("/onboarding/join?error=Invite%20code%20must%20be%206%20characters");
+    redirect(`/onboarding/join?error=${encodeMessage("邀請碼必須是 6 個字元。")}`);
   }
 
   const supabase = await getSupabaseServerClient();
@@ -177,15 +223,21 @@ export async function validateInviteAction(formData: FormData) {
   if (error || !preview || !preview.is_valid) {
     redirect(
       `/onboarding/join?error=${encodeMessage(
-        error?.message || "Invite code is invalid or expired",
+        getInvitePreviewErrorMessage(preview?.status),
       )}&inviteCode=${inviteCode}`,
     );
+  }
+
+  if (!preview.household_name || !preview.expires_at || !preview.creator_display_name) {
+    redirect(`/onboarding/join?error=${encodeMessage("暫時未能驗證邀請碼，請稍後再試。")}`);
   }
 
   redirect(
     `/onboarding/join?inviteCode=${inviteCode}&householdName=${encodeMessage(
       preview.household_name,
-    )}&expiresAt=${encodeURIComponent(preview.expires_at)}&valid=1`,
+    )}&expiresAt=${encodeURIComponent(preview.expires_at)}&creatorDisplayName=${encodeMessage(
+      preview.creator_display_name,
+    )}&memberCount=${preview.member_count}&valid=1`,
   );
 }
 
@@ -201,18 +253,55 @@ export async function claimInviteAction(formData: FormData) {
     "Member";
 
   const supabase = await getSupabaseServerClient();
-  const { error } = await supabase.rpc("claim_invite", {
+  const { data, error } = await supabase.rpc("claim_invite", {
     p_code: inviteCode,
     p_display_name: displayName,
   });
 
-  if (error) {
-    redirect(`/onboarding/join?error=${encodeMessage(error.message)}&inviteCode=${inviteCode}`);
+  const result = (data?.[0] ?? null) as ClaimInviteResult | null;
+
+  if (error || !result || result.status !== "success") {
+    redirect(
+      `/onboarding/join?error=${encodeMessage(
+        getClaimInviteErrorMessage(result?.status),
+      )}&inviteCode=${inviteCode}`,
+    );
   }
 
   revalidatePath("/");
   revalidatePath("/onboarding/join");
   redirect("/onboarding/accounts?joined=1");
+}
+
+export async function regenerateInviteAction() {
+  const currentHousehold = await requireTrustedCurrentHousehold();
+  const supabase = await getSupabaseServerClient();
+  const { data, error } = await supabase.rpc("regenerate_household_invite", {
+    p_household_id: currentHousehold.householdId,
+    p_invite_expiry_hours: DEFAULT_INVITE_EXPIRY_HOURS,
+  });
+
+  const result = (data?.[0] ?? null) as RegenerateInviteResult | null;
+
+  if (error || !result || (result.status !== "success" && result.status !== "active_invite_exists")) {
+    redirect(
+      `/onboarding/create?error=${encodeMessage(
+        getRegenerateInviteErrorMessage(result?.status),
+      )}`,
+    );
+  }
+
+  if (!result.household_name || !result.invite_code || !result.expires_at) {
+    redirect(`/onboarding/create?error=${encodeMessage("暫時未能重新產生邀請碼，請稍後再試。")}`);
+  }
+
+  revalidatePath("/");
+  revalidatePath("/onboarding/create");
+  redirect(
+    `/onboarding/create?success=1&householdName=${encodeMessage(
+      result.household_name,
+    )}&inviteCode=${result.invite_code}&expiresAt=${encodeURIComponent(result.expires_at)}`,
+  );
 }
 
 export async function completeAccountSetupAction(formData: FormData) {

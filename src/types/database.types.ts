@@ -232,11 +232,42 @@ export type Database = {
           p_code: string;
           p_display_name: string;
         };
-        Returns: string;
+        Returns: {
+          household_id: string | null;
+          household_name: string | null;
+          status: string;
+        }[];
+      };
+      create_household: {
+        Args: {
+          p_display_name: string;
+          p_household_name: string;
+          p_invite_expiry_hours?: number;
+        };
+        Returns: {
+          expires_at: string | null;
+          household_id: string | null;
+          household_name: string | null;
+          invite_code: string | null;
+          status: string;
+        }[];
       };
       get_user_household_ids: {
         Args: Record<PropertyKey, never>;
         Returns: string[];
+      };
+      regenerate_household_invite: {
+        Args: {
+          p_household_id: string;
+          p_invite_expiry_hours?: number;
+        };
+        Returns: {
+          expires_at: string | null;
+          household_id: string | null;
+          household_name: string | null;
+          invite_code: string | null;
+          status: string;
+        }[];
       };
       record_manual_adjustment: {
         Args: {
@@ -261,10 +292,14 @@ export type Database = {
           p_code: string;
         };
         Returns: {
-          expires_at: string;
-          household_id: string;
-          household_name: string;
+          creator_display_name: string | null;
+          expires_at: string | null;
+          household_id: string | null;
+          household_name: string | null;
           is_valid: boolean;
+          is_full: boolean;
+          member_count: number;
+          status: string;
         }[];
       };
     };
